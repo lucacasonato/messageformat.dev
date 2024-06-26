@@ -50,3 +50,15 @@
   opacity: 1;
   transition: opacity 0.4s ease;
 }
+
+@keyframes pulse-bg-blue {
+  0% {
+    @apply bg-blue-200 p-2 m-1
+  }
+  50% {
+    @apply bg-blue-100 p-3 m-0
+  }
+  100% {
+    @apply bg-blue-200 p-2 m-1
+  }
+}

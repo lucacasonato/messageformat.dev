@@ -119,13 +119,15 @@ export default function IndexPage(data: Lume.Data) {
               what are you waiting for?
             </div>
             <div class="pt-1 flex justify-center">
-              <a
-                href="/docs/get-started"
-                class="inline-block px-8 md:px-12 py-5 md:py-7 text-2xl font-bold text-white rounded-full bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 active:from-blue-700 active:to-blue-500 focus:from-blue-700 focus:to-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
-                id="get-started"
-              >
-                Get Started
-              </a>
+              <div class="p-2 animate-pulse-bg-blue rounded-full">
+                <a
+                  href="/docs/get-started"
+                  class="opacity-100! inline-block px-8 md:px-12 py-5 md:py-7 text-2xl font-bold text-white rounded-full bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 active:from-blue-700 active:to-blue-500 focus:from-blue-700 focus:to-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
+                  id="get-started"
+                >
+                  Get Started
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -231,7 +233,7 @@ export function Examples() {
               data-arrow-to="formatting-function"
               data-arrow-direction="right"
             >
-              the time formatting function
+              time formatting function
             </span>
             <CodeBlock>
               It is {" {"}

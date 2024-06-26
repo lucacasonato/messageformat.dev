@@ -8,6 +8,9 @@ export default {
       fontFamily: {
         handwritten: ["'Kalam'", "cursive"],
       },
+      animation: {
+        "pulse-bg-blue": "pulse-bg-blue 2s infinite ease",
+      },
     },
   },
 } satisfies Config;
