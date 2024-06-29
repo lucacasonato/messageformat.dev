@@ -62,3 +62,64 @@
     @apply bg-blue-200 p-2 m-1
   }
 }
+
+.markdown {
+  @apply text-lg text-blue-900
+}
+
+.markdown h1 {
+  @apply text-red-600;
+  content: "Don't use h1 in markdown"
+}
+
+.markdown h2 {
+  @apply scroll-mt-20 text-3xl font-bold font-serif text-blue-900 border-b border-gray-200 pb-1 mt-6 mb-4;
+}
+
+.markdown h3 {
+  @apply scroll-mt-20 text-2xl font-bold font-serif text-blue-900 border-b border-gray-200 mt-4 mb-4;
+}
+
+.markdown h4 {
+  @apply scroll-mt-20 text-xl font-bold font-serif text-blue-900 mt-3 mb-4;
+}
+
+.markdown p {
+  @apply mt-4 mb-4;
+}
+
+.markdown a {
+  @apply underline underline-offset-4 hover:text-blue-600;
+}
+
+.markdown .anchor {
+  @apply hidden text-blue-900/40;
+}
+
+.markdown h2:hover .anchor, .markdown h3:hover .anchor, .markdown h4:hover .anchor {
+  @apply inline-block
+}
+
+.markdown blockquote {
+  @apply border-l-4 border-blue-200 bg-blue-100 p-4 my-4;
+}
+
+.markdown ul {
+  @apply list-disc pl-7;
+}
+
+.markdown ol {
+  @apply list-decimal pl-7;
+}
+
+.markdown li {
+  @apply my-0.5;
+}
+
+.markdown :not(pre)>code {
+  @apply bg-gray-100 p-1 rounded;
+}
+
+.markdown pre {
+  @apply bg-gray-100 p-4 rounded;
+}
