@@ -391,7 +391,7 @@ function PluralizationCode() {
           </div>
           <input
             id="count-slider"
-            class="inline-block ml-6"
+            class="inline-block ml-6 w-full mr-4"
             type="range"
             min="0"
             max="5"
