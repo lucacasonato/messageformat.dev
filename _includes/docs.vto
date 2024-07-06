@@ -2,52 +2,83 @@
 layout: layout.vto
 ---
 
-<header class="sticky top-0 z-20">
-  <nav class="bg-blue-50">
-    <div class=" flex justify-between items-center pt-4 pb-2 px-8">
+<header class="sticky top-0 h-16 z-30">
+   <svg
+    class="rotate-180 -z-10 absolute top-0 left-0"
+    height="100%"
+    width="100%"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1000 70"
+    preserveAspectRatio="none"
+    fill="url(#gradient)"
+  >
+    <linearGradient id="gradient">
+      <stop style="stop-color: #1d4ed8" offset="0%" />
+      <stop style="stop-color: #3b82f6" offset="100%" />
+    </linearGradient>
+    <rect width="1000" height="61" y="9" />
+    <path d="M0 0 Q 500 10 1000 0 L 1000 10 L 0 10 Z" />
+  </svg>
+  <nav class="z-20 h-full">
+    <div class="h-full flex justify-between items-center py-2 px-8">
       <div>
-        <a href="/" class="text-blue-900 font-serif font-bold text-2xl hover:underline underline-offset-4">MessageFormat 2</a>
-        <span class="mx-2 text-blue-900 select-none">/</span>
-        <span class="text-blue-900 text-lg">Docs</span>
+        <a href="/" class="text-blue-50
+         font-serif font-bold text-2xl hover:underline underline-offset-4">MessageFormat 2</a>
+        <span class="mx-2 text-blue-50 select-none">/</span>
+        <span class="text-blue-50 text-lg">Docs</span>
       </div>
       {{# <ul class="flex">
         <li class="mx-2"><a href="/docs" class="px-4 py-2 font-bold text-white rounded-full bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 active:from-blue-700 active:to-blue-500 focus:from-blue-700 focus:to-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white">Docs</a></li>
       </ul> #}}
     </div>
   </nav>
-  <svg
-    class="w-full fill-blue-50 rotate-180"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 1000 10"
-  >
-  <path d="M0 0 Q 500 10 1000 0 L 1000 10 L 0 10 Z" />
-  </svg>
 </header>
 
 <div class="flex gap-4 mt-8">
   <nav class="fixed w-80 top-0 bg-blue-50/60 bottom-0">
     <div class="px-6 py-8 mt-16 overflow-y-auto h-full">        
-    <h2 class="text-sm font-bold text-blue-900 uppercase">Docs</h2>
-    <ul class="space-y-1 mt-3">
-      {{ for each of nav.menu("/docs/", "", "order").children }}
-        <li>
-          <a href="{{ each.data.url }}" class="block text-blue-900 hover:underline">{{ each.data.title }}</a>
-        </li>
-      {{ /for }}
-    </ul>
+      <ul class="space-y-2">
+        {{ for each of sidebar }}
+          {{ if typeof each === "string" }}
+            <li>
+              <a href="{{ search.data(each).url }}" class="block text-blue-900 hover:underline">{{ search.data(each).sidebar_title || search.data(each).title }}</a>
+            </li>
+          {{ else }}
+            <li class="pt-3">
+              <span class="block text-sm text-blue-900 font-bold mb-1">{{ each.section }}</span>
+              <ul class="space-y-1">
+                {{ for item of each.children }}
+                  <li>
+                    <a href="{{ search.data(item).url }}" class="block text-blue-900 hover:underline">{{ search.data(item).sidebar_title || search.data(item).title }}</a>
+                  </li>
+                {{ /for }}
+              </ul>
+            </li>
+          {{ /if }}
+        {{ /for }}
+      </ul>
     </div>
   </nav>
   <div class="ml-80 w-full flex justify-center">
     <main class="flex w-full -mx-8">
-      <div class="max-w-[70ch] mx-16">
+      <div class="max-w-[70ch] w-full mx-16">
         <h1 class="text-4xl font-serif font-bold text-blue-900 border-b border-gray-200 pb-2 mb-8">{{ title }}</h1>
-        <div class="markdown">{{ content }}</div>
+        <div class="markdown mb-24">{{ content }}</div>
       </div>
       <div style="flex-basis: 20%" class="flex-grow-0 flex-shrink-0 mx-16">
         <ul class="pl-4 border-l border-gray-200 sticky top-24">
           {{ for each of toc }}
             <li>
               <a href="#{{ each.slug }}" class="block text-blue-900 hover:underline">{{ each.text }}</a>
+              {{ if each.children }}
+                <ul class="pl-4">
+                  {{ for item of each.children }}
+                    <li>
+                      <a href="#{{ item.slug }}" class="block text-blue-900 hover:underline">{{ item.text }}</a>
+                    </li>
+                  {{ /for }}
+                </ul>
+              {{ /if }}
             </li>
           {{ /for }}
         </ul>

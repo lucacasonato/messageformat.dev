@@ -2,7 +2,7 @@ import { ComponentChildren } from "preact";
 
 export const layout = "layout.vto";
 
-export default function IndexPage(data: Lume.Data) {
+export default function IndexPage() {
   return (
     <>
       <div class="bg-blue-50">
@@ -14,36 +14,15 @@ export default function IndexPage(data: Lume.Data) {
               message strings, designed to make it simple to create{" "}
               <b>natural sounding</b> localized messages.
             </AdParagraph>
-            {
-              /* <AdParagraph>
-          MF2 messages support <b>genders</b>, <b>pluralization rules</b>, and
-          {" "}
-          <b>gramatical cases</b>{" "}
-          for translations, even when the source language doesn't have these
-          features.
-        </AdParagraph>
-        <AdParagraph>
-          MF2 understands formattable data such as <b>dates</b>, <b>times</b>,
-          {" "}
-          <b>numbers</b>, <b>currencies</b>, and{" "}
-          <b>units</b>, so that such data can be formatted in a
-          locale-appropriate way.
-        </AdParagraph>
-        <AdParagraph>
-          Markup and text can be <b>mixed</b>{" "}
-          in a single message, allowing for richly formatted localized messages,
-          without tying the translation to the source language's structure.
-        </AdParagraph> */
-            }
             <div class="pt-4 md:pt-8 flex flex-wrap gap-4 md:gap-6">
               <a
-                href="/docs/getting-started"
+                href="/docs/quick-start"
                 class="inline-block px-6 md:px-8 py-3 md:py-4 text-lg font-bold text-white rounded-full bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 active:from-blue-700 active:to-blue-500 focus:from-blue-700 focus:to-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
               >
                 Get Started
               </a>
               <a
-                href="/docs"
+                href="/docs/why"
                 class="inline-block px-6 md:px-8 py-3 md:py-4 text-lg font-bold text-blue-600 rounded-full bg-blue-100 hover:bg-blue-200 active:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
               >
                 Documentation
@@ -121,7 +100,7 @@ export default function IndexPage(data: Lume.Data) {
             <div class="pt-1 flex justify-center">
               <div class="p-2 animate-pulse-bg-blue rounded-full">
                 <a
-                  href="/docs/get-started"
+                  href="/docs/quick-start"
                   class="opacity-100! inline-block px-8 md:px-12 py-5 md:py-7 text-2xl font-bold text-white rounded-full bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 active:from-blue-700 active:to-blue-500 focus:from-blue-700 focus:to-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
                   id="get-started"
                 >

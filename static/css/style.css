@@ -22,23 +22,25 @@
 
 @keyframes slideFadeOut {
   0% {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
+
   100% {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
   }
 }
 
 @keyframes slideFadeIn {
   0% {
-      opacity: 0;
-      transform: translateY(-20px);
+    opacity: 0;
+    transform: translateY(-20px);
   }
+
   100% {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -55,9 +57,11 @@
   0% {
     @apply bg-blue-200 p-2 m-1
   }
+
   50% {
     @apply bg-blue-100 p-3 m-0
   }
+
   100% {
     @apply bg-blue-200 p-2 m-1
   }
@@ -77,7 +81,7 @@
 }
 
 .markdown h3 {
-  @apply scroll-mt-20 text-2xl font-bold font-serif text-blue-900 border-b border-gray-200 mt-4 mb-4;
+  @apply scroll-mt-20 text-2xl font-bold font-serif text-blue-900 border-b border-gray-200 mt-6 mb-4;
 }
 
 .markdown h4 {
@@ -96,7 +100,9 @@
   @apply hidden text-blue-900/40;
 }
 
-.markdown h2:hover .anchor, .markdown h3:hover .anchor, .markdown h4:hover .anchor {
+.markdown h2:hover .anchor,
+.markdown h3:hover .anchor,
+.markdown h4:hover .anchor {
   @apply inline-block
 }
 

@@ -1,19 +1,29 @@
 ---
 title: Quick Start
 description: Get started with the basics of MessageFormat 2.
-order: "1"
 ---
 
-MessageFormat 2.0 is designed to handle dynamic messages in multiple languages
-and cultures. This guide provides an overview of its syntax and features, along
-with examples to help you get started.
+MessageFormat 2.0 is designed to enable localization of dynamic messages across
+different human languages. This page walks through the syntax of Message Format
+2 messages, giving an overview of what Message Format 2 is capable of.
+
+To use Message Format 2.0 in a project, follow these guides to set up Message
+Format 2:
+
+- [JavaScript/Typescript](/docs/integration/js)
+- [Java](/docs/integration/java)
+- [C](/docs/integration/c)
+- [C++](/docs/integration/cpp)
+
+> Good to know: you can write Message Format 2 messages once, and re-use them
+> across different applications, written in different programming languages.
 
 ## Basic Syntax
 
 ### Text
 
 A simple message is just plain text. All Unicode characters can be used in text.
-The only special characters are curly braces `{}` - they need to be escaped.
+The only special characters are curly braces `{}` — they need to be escaped.
 Messages can also not start with the `.` character.
 
 ```mf2
@@ -41,198 +51,113 @@ preceded by a dollar sign `$`.
 Hello, {$name}!
 ```
 
+The values for variables are provided by the invoker of the message. They could
+be numbers, strings, dates, or even lists.
+
 ## Functions
 
-Placeholders can be modified with functions. Functions are prefixed with a colon
-`:`. Functions can be used to format numbers, dates, and other types of data.
+How placeholders behave can be modified with functions. Functions are prefixed
+with a colon `:`. Functions are often used to format values in particular ways.
 
 ```mf2
 It is the {$today :datetime} today.
 ```
 
+Message Format 2 has multiple built in functions. These allow you, for example,
+to format numbers in a locale appropriate way. See the
+[full list of built-in functions](/docs/reference/functions/).
+
 ### Function Options
 
-Functions can have options. Options are key-value pairs separated by an equal
-sign `=`. Options are separated by spaces.
+Functions can have options (arguments). Options are key-value pairs separated by
+an equal sign `=`. Options are separated by spaces.
 
 ```mf2
 You have {$today :datetime dateStyle=long} items.
 ```
 
+Options can be used to modify the behaviour of functions, for example changing
+whether time formatting should use AM/PM, or the 24 hour clock.
+
 ## Literals
 
 In addition to variables, placeholders can contain literals. Literals are also
-used as the values of options.
+used as the values of options. Literals can be text or numbers.
 
-### Unquoted Literals
+### Number
 
-Unquoted literals are simple strings. They can contain all characters except
-whitespace or special characters.
-
-```mf2
-
-```
+Number literals can represent any integer or decimal number at arbitrary
+precision.
 
 ```mf2
-Hello, {$name}!
+I eat {1.5} bananas.
 ```
 
-### Escaping
-
-Escape special characters with a backslash `\`. Only curly braces need to be
-escaped in message text. All other characters are not special.
+Number literals are often useful when combined with the built-in `:number` or
+`:integer` functions, enabling formatting in a locale aware way:
 
 ```mf2
-Curly braces: \{ and \}
+The total was {0.5 :number style=percent}.
 ```
 
-> There are no Unicode escape sequences in MessageFormat 2.0. Use the actual
-> Unicode characters in your message.
+Decimals, and scientific notation are also supported in number literals:
 
-## Variables
+```
+{1.3e-10 :number notation=engineering}
+```
 
-### External Variables
+### Unquoted Text
 
-External variables are passed to the message from the outside context.
+Unquoted text literals are simple strings. They can contain all characters
+except whitespace or special characters.
 
 ```mf2
-Hello {$name}
+Hello, {world}!
 ```
 
-## Annotations and Functions
+This is most often useful when passing a simple string as the value to a
+function option - here it is `h12`:
 
-Annotations modify how variables are processed and displayed. Functions are a
-type of annotation prefixed with a colon `:`.
-
-### Number Formatting
-
-Format numbers with the `:number` function.
-
-```plaintext
-You have {count :number} items.
+```mf2
+It is {$now :datetime hourCycle=h12}
 ```
 
-Options for number formatting:
+> There is no boolean literal in Message Format 2. Options with boolean values
+> usually use the text literals `true` and `false` to represent the two boolean
+> states.
 
-```plaintext
-You have {count :number style=decimal} items.
+### Quoted Text
+
+Text literals that need to contain spaces or special characters like `{` or `@`
+can be wrapped in `|`, the quote character in Message Format 2 syntax.
+
+```mf2
+My name is {|John Doe|}.
 ```
 
-### Date Formatting
+Quoted text can also contain escapes, just like in simple messages. In quoted
+text, `|` must be escaped.
 
-Format dates with the `:datetime` function.
-
-```plaintext
-Today is {date :datetime}.
-```
-
-Options for date formatting:
-
-```plaintext
-Today is {date :datetime dateStyle=long}.
-```
-
-## Matchers and Selectors
-
-Matchers allow the message to change based on the value of a variable. Use the
-`.match` keyword followed by selectors and variants.
-
-### Simple Matcher
-
-```plaintext
-.match {count :number}
-0 {You have no items.}
-1 {You have one item.}
-* {You have {count} items.}
-```
-
-### Complex Matcher
-
-Matchers can have multiple selectors.
-
-```plaintext
-.input {$numLikes :integer}
-.input {$numShares :integer}
-.match {$numLikes} {$numShares}
-0 0 {Your item has no likes and has not been shared.}
-0 one {Your item has no likes and has been shared once.}
-0 * {Your item has no likes and has been shared {numShares} times.}
-one 0 {Your item has one like and has not been shared.}
-one one {Your item has one like and has been shared once.}
-one * {Your item has one like and has been shared {numShares} times.}
-* 0 {Your item has {numLikes} likes and has not been shared.}
-* one {Your item has {numLikes} likes and has been shared once.}
-* * {Your item has {numLikes} likes and has been shared {numShares} times.}
+```mf2
+This is the {|pipe \| character|}.
 ```
 
 ## Markup
 
-Markup is used to represent non-language parts of a message, such as HTML
-elements or styling.
+TODO
 
-### Open and Close Markup
+## Annotations
 
-```plaintext
-{#b}Bold text{/b}
-```
+TODO
 
-### Standalone Markup
+## Matchers
 
-```plaintext
-{#img src=|logo.png| /}
-```
+TODO
 
-### Markup with Attributes
+## Local Declarations
 
-```plaintext
-{#button class=|primary|}Click me{/button}
-```
+TODO
 
-## Error Handling
+## Input Declarations
 
-### Syntax Errors
-
-Occurs when the message is not well-formed.
-
-```plaintext
-{{Missing end brace}
-```
-
-### Data Model Errors
-
-Occurs when the message violates semantic requirements.
-
-```plaintext
-.match {count :number}
-1 {One item}
-two {Two items}  <!-- 'two' is not a valid numeric key -->
-```
-
-## Complete Example
-
-Here’s a complete example that combines several features:
-
-```plaintext
-.input {$userName}
-.input {$loginDate :datetime}
-.local $greeting = {Hello}
-
-{#greeting} {$userName},
-
-.match {$loginDate :datetime}
-{2024-01-01T00:00:00Z} {Welcome back!}
-* {You last logged in on {loginDate}.}
-
-Thank you for visiting.
-```
-
-In this example:
-
-- The message greets the user.
-- It checks if the login date is January 1, 2024, and provides a special welcome
-  message for that date.
-- If the login date is not January 1, 2024, it shows the date of the last login.
-
-This guide provides a foundation to start using MessageFormat 2.0. Explore more
-features and options to fully utilize its power for internationalizing your
-applications.
+TODO

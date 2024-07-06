@@ -1,1 +1,17 @@
 layout: docs.vto
+sidebar:
+  - docs/quick-start/
+  - docs/why/
+  - section: Reference
+    children:
+      - docs/reference/functions/
+      - docs/reference/literals/
+      - docs/reference/variables/
+      - docs/reference/markup/
+      - docs/reference/matchers/
+  - section: Using MF2 with...
+    children:
+      - docs/integration/js/
+      - docs/integration/java/
+      - docs/integration/c/
+      - docs/integration/cpp/
