@@ -53,11 +53,14 @@
       "npm:autoprefixer@10.4.19": "npm:autoprefixer@10.4.19_postcss@8.4.38",
       "npm:estree-walker@3.0.3": "npm:estree-walker@3.0.3",
       "npm:get-google-fonts": "npm:get-google-fonts@1.2.2",
+      "npm:locale-codes@1.3.1": "npm:locale-codes@1.3.1",
       "npm:markdown-it-anchor@9": "npm:markdown-it-anchor@9.0.1_@types+markdown-it@14.1.1_markdown-it@14.1.0",
       "npm:markdown-it-attrs@4.1.6": "npm:markdown-it-attrs@4.1.6_markdown-it@14.1.0",
       "npm:markdown-it-deflist@3.0.0": "npm:markdown-it-deflist@3.0.0",
       "npm:markdown-it@14.1.0": "npm:markdown-it@14.1.0",
       "npm:meriyah@4.5.0": "npm:meriyah@4.5.0",
+      "npm:message-format": "npm:message-format@6.2.4",
+      "npm:messageformat@4.0.0-7": "npm:messageformat@4.0.0-7",
       "npm:postcss-import@16.1.0": "npm:postcss-import@16.1.0_postcss@8.4.38",
       "npm:postcss@8.4.38": "npm:postcss@8.4.38",
       "npm:postcss@8.4.39": "npm:postcss@8.4.39",
@@ -641,6 +644,21 @@
           "mime-types": "mime-types@2.1.35"
         }
       },
+      "format-message-formats@6.2.4": {
+        "integrity": "sha512-smT/fAqBLqusWfWCKRAx6QBDAAbmYznWsIyTyk66COmvwt2Byiqd7SJe2ma9a5oV0kwRaOJpN/F4lr4YK/n6qQ==",
+        "dependencies": {}
+      },
+      "format-message-interpret@6.2.4": {
+        "integrity": "sha512-dRvz9mXhITApyOtfuFEb/XqvCe1u6RMkQW49UJHXS8w2S8cAHCqq5LNDFK+QK6XVzcofROycLb/k1uybTAKt2w==",
+        "dependencies": {
+          "format-message-formats": "format-message-formats@6.2.4",
+          "lookup-closest-locale": "lookup-closest-locale@6.2.0"
+        }
+      },
+      "format-message-parse@6.2.4": {
+        "integrity": "sha512-k7WqXkEzgXkW4wkHdS6Cv2Ou0rIFtiDelZjgoe1saW4p7FT7zS8OeAUpAekhormqzpeecR97e4vBft1zMsfFOQ==",
+        "dependencies": {}
+      },
       "fraction.js@4.3.7": {
         "integrity": "sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==",
         "dependencies": {}
@@ -785,6 +803,10 @@
         "integrity": "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==",
         "dependencies": {}
       },
+      "iso639-codes@1.0.1": {
+        "integrity": "sha512-jdTSv8yn6D7GODDrRtuWG7y3du3aoa+ki5H8h/Y48/NleNAd7Fw/M2niTTLXGH4QnqhJ98hg1JMQtP9csQ31Lg==",
+        "dependencies": {}
+      },
       "isstream@0.1.2": {
         "integrity": "sha512-Yljz7ffyPbrLpLngrMtZ7NduUgVvi6wG9RJ9IUcyCd59YQ911PBJphODUcbOVbqYfxe1wuYf/LJ8PauMRwsM/g==",
         "dependencies": {}
@@ -829,6 +851,10 @@
           "verror": "verror@1.10.0"
         }
       },
+      "langs@2.0.0": {
+        "integrity": "sha512-v4pxOBEQVN1WBTfB1crhTtxzNLZU9HPWgadlwzWKISJtt6Ku/CnpBrwVy+jFv8StjxsPfwPFzO0CMwdZLJ0/BA==",
+        "dependencies": {}
+      },
       "lilconfig@2.1.0": {
         "integrity": "sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==",
         "dependencies": {}
@@ -846,6 +872,18 @@
         "dependencies": {
           "uc.micro": "uc.micro@2.1.0"
         }
+      },
+      "locale-codes@1.3.1": {
+        "integrity": "sha512-C7fxGkU4jAuHqavtKj4IhSD2yPEzChFMRfNHjzwIAz9JTbYHtBJDcQQgmJDezBogk9/vvgS7chKMhpVEKavk5A==",
+        "dependencies": {
+          "iso639-codes": "iso639-codes@1.0.1",
+          "langs": "langs@2.0.0",
+          "windows-locale": "windows-locale@1.1.3"
+        }
+      },
+      "lookup-closest-locale@6.2.0": {
+        "integrity": "sha512-/c2kL+Vnp1jnV6K6RpDTHK3dgg0Tu2VVp+elEiJpjfS1UyY7AjOYHohRug6wT0OpoX2qFgNORndE9RqesfVxWQ==",
+        "dependencies": {}
       },
       "lru-cache@10.2.2": {
         "integrity": "sha512-9hp3Vp2/hFQUiIwKo8XCeFVnrg8Pk3TYNPIR7tJADKi5YfcF7vEaK7avFHTlSy3kOKYaJQaalfEo6YuXdceBOQ==",
@@ -889,6 +927,17 @@
       },
       "meriyah@4.5.0": {
         "integrity": "sha512-Rbiu0QPIxTXgOXwiIpRVJfZRQ2FWyfzYrOGBs9SN5RbaXg1CN5ELn/plodwWwluX93yzc4qO/bNIen1ThGFCxw==",
+        "dependencies": {}
+      },
+      "message-format@6.2.4": {
+        "integrity": "sha512-1+F2nu0rvswCuBOfXM7DRceUt/3mU1e9x6fFaC0NistSLDTyIrBJqplptrjjC9kuvHqndEiZUWMNM/eX3gxdmg==",
+        "dependencies": {
+          "format-message-interpret": "format-message-interpret@6.2.4",
+          "format-message-parse": "format-message-parse@6.2.4"
+        }
+      },
+      "messageformat@4.0.0-7": {
+        "integrity": "sha512-e7Ev5SNMHQ02dZPlc2blZWum1kB2B3jGQAskO97cZd9H/Eo8BF1GMhigswTNbh/2itpbDqa0jtBz9+VcRgfiQA==",
         "dependencies": {}
       },
       "micromatch@4.0.7": {
@@ -1406,6 +1455,10 @@
         "dependencies": {
           "isexe": "isexe@2.0.0"
         }
+      },
+      "windows-locale@1.1.3": {
+        "integrity": "sha512-0OlMOPNGj7GTB6C7WmqS3o4eydjnoYj0uwot2KJf7E0JUucwYwzkcvCWQwnuOV60WqDMeGJpSankgveNMj5r0g==",
+        "dependencies": {}
       },
       "wrap-ansi@7.0.0": {
         "integrity": "sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==",
