@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
       messageArea.value = message;
       dataArea.value = data;
       localeSelect.value = locale;
+      onUpdate();
     }
-    onUpdate();
   } catch (e) {
     // Ignore errors
   }
