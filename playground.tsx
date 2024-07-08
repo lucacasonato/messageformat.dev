@@ -3,7 +3,7 @@ export const layout = "layout.vto";
 export default function IndexPage() {
   return (
     <>
-      <header class="sticky top-0 h-24 z-30">
+      <header class="relative h-24 z-30">
         <svg
           class="rotate-180 -z-10 absolute top-0 left-0"
           height="100%"
