@@ -133,6 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 case "link": {
                   const link = document.createElement("a");
                   link.href = part.options?.url as string;
+                  link.target = "_blank";
+                  link.rel = "noopener noreferrer";
                   currentElement.appendChild(link);
                   currentElement = link;
                   break;

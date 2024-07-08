@@ -15,8 +15,9 @@ Format 2:
 - [C](/docs/integration/c)
 - [C++](/docs/integration/cpp)
 
-> Good to know: you can write Message Format 2 messages once, and re-use them
-> across different applications, written in different programming languages.
+You can also try out Message Format 2 in the online playground:
+
+<a href="/playground/" class="button mb-8">Try in Playground</a>
 
 ## Basic Syntax
 

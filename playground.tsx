@@ -57,7 +57,7 @@ export default function IndexPage() {
         </nav>
       </header>
 
-      <div class="grid grid-cols-2 px-8 mt-6 mb-24 mx-auto max-w-screen-lg gap-4">
+      <div class="grid grid-cols-2 px-8 mt-6 mb-12 mx-auto max-w-screen-lg gap-4">
         {
           /* <div class="col-span-2 flex justify-between items-end gap-6">
           <h1 class="text-3xl font-bold font-serif px-2 pb-1 text-blue-900 border-b w-full">
@@ -92,7 +92,7 @@ export default function IndexPage() {
         </div> */
         }
 
-        <div class="h-72 flex flex-col">
+        <div class="h-80 flex flex-col">
           <label for="message">
             <h2 class="text-xl font-bold font-serif px-2 pb-1 text-blue-900">
               Message
@@ -112,7 +112,7 @@ export default function IndexPage() {
           >
           </div>
         </div>
-        <div class="h-72 flex flex-col">
+        <div class="h-80 flex flex-col">
           <label for="data">
             <h2 class="text-xl font-bold font-serif px-2 pb-1 text-blue-900">
               Data
@@ -146,6 +146,90 @@ export default function IndexPage() {
             hidden
           >
           </pre>
+        </div>
+      </div>
+
+      <div class="px-8 mt-12 mb-24 mx-auto max-w-screen-lg grid grid-cols-2 gap-6">
+        <div class="space-y-6">
+          <div class="px-2 space-y-2">
+            <h2 class="text-xl font-bold font-serif pb-1 text-blue-900">
+              About the playground
+            </h2>
+            <p class="text-blue-950">
+              All messages written in the <code>Message</code>{" "}
+              field are formatted using the data written in the{" "}
+              <code>Data</code>{" "}
+              field. This formatting happens locally, using the{" "}
+              <code>locale</code> selected in the dropdown.
+            </p>
+            <p class="text-blue-950">
+              For more information on MessageFormat 2, please refer to the{" "}
+              <a
+                href="/docs/quick-start/"
+                class="text-blue-700 underline"
+              >
+                quick start guide
+              </a>.
+            </p>
+          </div>
+          <div class="px-2 space-y-2">
+            <h2 class="text-xl font-bold font-serif pb-1 text-blue-900">
+              Functions
+            </h2>
+            <p class="text-blue-950">
+              All built-in MessageFormat 2 functions are supported:{" "}
+              <code>string</code>, <code>number</code>, <code>integer</code>,
+              {" "}
+              <code>datetime</code>, <code>date</code>, and <code>time</code>.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="px-2 space-y-2">
+            <h2 class="text-xl font-bold font-serif pb-1 text-blue-900">
+              Markup
+            </h2>
+            <p class="text-blue-950">
+              MessageFormat 2 does not have built-in markup tags. The playground
+              however supports three markup tags that can be used to try out
+              markup.
+            </p>
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr>
+                  <th class="border px-2">Tag</th>
+                  <th class="border px-2">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border px-2">
+                    <code>bold</code>
+                  </td>
+                  <td class="border px-2">Make the contained message bold.</td>
+                </tr>
+                <tr>
+                  <td class="border px-2">
+                    <code>italic</code>
+                  </td>
+                  <td class="border px-2">
+                    Make the contained message italic.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border px-2">
+                    <code>link</code>
+                  </td>
+                  <td class="border px-2">
+                    Add a link, pointing to the <code>url</code> option.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-blue-950">
+              Markup tags must be balanced.
+            </p>
+          </div>
         </div>
       </div>
     </>

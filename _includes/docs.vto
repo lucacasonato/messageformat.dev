@@ -27,9 +27,9 @@ layout: layout.vto
         <span class="mx-2 text-blue-50 select-none">/</span>
         <span class="text-blue-50 text-lg">Docs</span>
       </div>
-      {{# <ul class="flex">
-        <li class="mx-2"><a href="/docs" class="px-4 py-2 font-bold text-white rounded-full bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 active:from-blue-700 active:to-blue-500 focus:from-blue-700 focus:to-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white">Docs</a></li>
-      </ul> #}}
+      <ul class="flex">
+        <li class="mx-2"><a href="/playground/" class="px-4 py-2 font-bold text-blue-600 rounded-full bg-gray-50 hover:bg-blue-200 active:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white">Playground</a></li>
+      </ul>
     </div>
   </nav>
 </header>
@@ -45,7 +45,7 @@ layout: layout.vto
             </li>
           {{ else }}
             <li class="pt-3">
-              <span class="block text-sm text-blue-900 font-bold mb-1">{{ each.section }}</span>
+              <span class="block text-sm text-blue-900 font-bold font-serif mb-1">{{ each.section }}</span>
               <ul class="space-y-1">
                 {{ for item of each.children }}
                   <li>

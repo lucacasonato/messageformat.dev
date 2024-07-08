@@ -16,13 +16,13 @@ export default function IndexPage() {
             </AdParagraph>
             <div class="pt-4 md:pt-8 flex flex-wrap gap-4 md:gap-6">
               <a
-                href="/docs/quick-start"
+                href="/playground/"
                 class="inline-block px-6 md:px-8 py-3 md:py-4 text-lg font-bold text-white rounded-full bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 active:from-blue-700 active:to-blue-500 focus:from-blue-700 focus:to-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
               >
-                Get Started
+                Try in Playground
               </a>
               <a
-                href="/docs/why"
+                href="/docs/quick-start/"
                 class="inline-block px-6 md:px-8 py-3 md:py-4 text-lg font-bold text-blue-600 rounded-full bg-blue-100 hover:bg-blue-200 active:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
               >
                 Documentation
