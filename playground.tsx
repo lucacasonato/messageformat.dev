@@ -137,7 +137,7 @@ export default function IndexPage() {
           <h2 class="text-xl font-bold font-serif px-2 pb-1 text-blue-900">
             Output
           </h2>
-          <div class="border rounded-md p-6 text-lg" id="output">
+          <div class="border rounded-md p-6 text-lg min-h-20" id="output">
             {`Hello User!`}
           </div>
           <pre
