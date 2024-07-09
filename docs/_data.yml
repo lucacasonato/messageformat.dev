@@ -2,6 +2,7 @@ layout: docs.vto
 sidebar:
   - docs/quick-start/
   - docs/why/
+  - docs/syntax-guide/
   - section: Reference
     children:
       - docs/reference/functions/
