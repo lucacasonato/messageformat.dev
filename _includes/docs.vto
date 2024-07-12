@@ -41,15 +41,15 @@ layout: layout.vto
         {{ for each of sidebar }}
           {{ if typeof each === "string" }}
             <li>
-              <a href="{{ search.data(each).url }}" class="block text-blue-900 hover:underline">{{ search.data(each).sidebar_title || search.data(each).title }}</a>
+              <a href="{{ search.data(each).url }}" class="block text-black hover:underline">{{ search.data(each).sidebar_title || search.data(each).title }}</a>
             </li>
           {{ else }}
             <li class="pt-3">
-              <span class="block text-sm text-blue-900 font-bold font-serif mb-1">{{ each.section }}</span>
+              <span class="block text-sm text-black font-bold font-serif mb-1">{{ each.section }}</span>
               <ul class="space-y-1">
                 {{ for item of each.children }}
                   <li>
-                    <a href="{{ search.data(item).url }}" class="block text-blue-900 hover:underline">{{ search.data(item).sidebar_title || search.data(item).title }}</a>
+                    <a href="{{ search.data(item).url }}" class="block text-black hover:underline">{{ search.data(item).sidebar_title || search.data(item).title }}</a>
                   </li>
                 {{ /for }}
               </ul>
@@ -62,19 +62,19 @@ layout: layout.vto
   <div class="ml-80 w-full flex justify-center">
     <main class="flex w-full -mx-8">
       <div class="max-w-[70ch] w-full mx-16">
-        <h1 class="text-4xl font-serif font-bold text-blue-900 border-b border-gray-200 pb-2 mb-8">{{ title }}</h1>
+        <h1 class="text-4xl font-serif font-bold text-black border-b border-gray-200 pb-2 mb-8">{{ title }}</h1>
         <div class="markdown mb-24">{{ content }}</div>
       </div>
       <div style="flex-basis: 20%" class="flex-grow-0 flex-shrink-0 mx-16">
         <ul class="pl-4 border-l border-gray-200 sticky top-24">
           {{ for each of toc }}
             <li>
-              <a href="#{{ each.slug }}" class="block text-blue-900 hover:underline">{{ each.text }}</a>
+              <a href="#{{ each.slug }}" class="block text-black hover:underline">{{ each.text }}</a>
               {{ if each.children }}
                 <ul class="pl-4">
                   {{ for item of each.children }}
                     <li>
-                      <a href="#{{ item.slug }}" class="block text-blue-900 hover:underline">{{ item.text }}</a>
+                      <a href="#{{ item.slug }}" class="block text-black hover:underline">{{ item.text }}</a>
                     </li>
                   {{ /for }}
                 </ul>

@@ -94,7 +94,7 @@ export default function IndexPage() {
 
         <div class="h-80 flex flex-col">
           <label for="message">
-            <h2 class="text-xl font-bold font-serif px-2 pb-1 text-blue-900">
+            <h2 class="text-xl font-bold font-serif px-2 pb-1 text-black">
               Message
             </h2>
           </label>
@@ -114,7 +114,7 @@ export default function IndexPage() {
         </div>
         <div class="h-80 flex flex-col">
           <label for="data">
-            <h2 class="text-xl font-bold font-serif px-2 pb-1 text-blue-900">
+            <h2 class="text-xl font-bold font-serif px-2 pb-1 text-black">
               Data
             </h2>
           </label>
@@ -134,7 +134,7 @@ export default function IndexPage() {
         </div>
 
         <div class="col-span-2">
-          <h2 class="text-xl font-bold font-serif px-2 pb-1 text-blue-900">
+          <h2 class="text-xl font-bold font-serif px-2 pb-1 text-black">
             Output
           </h2>
           <div class="border rounded-md p-6 text-lg min-h-20" id="output">
@@ -152,17 +152,17 @@ export default function IndexPage() {
       <div class="px-8 mt-12 mb-24 mx-auto max-w-screen-lg grid grid-cols-2 gap-6">
         <div class="space-y-6">
           <div class="px-2 space-y-2">
-            <h2 class="text-xl font-bold font-serif pb-1 text-blue-900">
+            <h2 class="text-xl font-bold font-serif pb-1 text-black">
               About the playground
             </h2>
-            <p class="text-blue-950">
+            <p class="text-black">
               All messages written in the <code>Message</code>{" "}
               field are formatted using the data written in the{" "}
               <code>Data</code>{" "}
               field. This formatting happens locally, using the{" "}
               <code>locale</code> selected in the dropdown.
             </p>
-            <p class="text-blue-950">
+            <p class="text-black">
               For more information on MessageFormat 2, please refer to the{" "}
               <a
                 href="/docs/quick-start/"
@@ -173,10 +173,10 @@ export default function IndexPage() {
             </p>
           </div>
           <div class="px-2 space-y-2">
-            <h2 class="text-xl font-bold font-serif pb-1 text-blue-900">
+            <h2 class="text-xl font-bold font-serif pb-1 text-black">
               Functions
             </h2>
-            <p class="text-blue-950">
+            <p class="text-black">
               All built-in MessageFormat 2 functions are supported:{" "}
               <code>string</code>, <code>number</code>, <code>integer</code>,
               {" "}
@@ -186,10 +186,10 @@ export default function IndexPage() {
         </div>
         <div>
           <div class="px-2 space-y-2">
-            <h2 class="text-xl font-bold font-serif pb-1 text-blue-900">
+            <h2 class="text-xl font-bold font-serif pb-1 text-black">
               Markup
             </h2>
-            <p class="text-blue-950">
+            <p class="text-black">
               MessageFormat 2 does not have built-in markup tags. The playground
               however supports three markup tags that can be used to try out
               markup.
@@ -226,7 +226,7 @@ export default function IndexPage() {
                 </tr>
               </tbody>
             </table>
-            <p class="text-blue-950">
+            <p class="text-black">
               Markup tags must be balanced.
             </p>
           </div>

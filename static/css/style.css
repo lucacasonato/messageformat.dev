@@ -68,7 +68,7 @@
 }
 
 .markdown {
-  @apply text-lg text-blue-900
+  @apply text-lg text-black
 }
 
 .markdown h1 {
@@ -77,15 +77,15 @@
 }
 
 .markdown h2 {
-  @apply scroll-mt-20 text-3xl font-bold font-serif text-blue-900 border-b border-gray-200 pb-1 mt-6 mb-4;
+  @apply scroll-mt-20 text-3xl font-bold font-serif text-black border-b border-gray-200 pb-1 mt-6 mb-4;
 }
 
 .markdown h3 {
-  @apply scroll-mt-20 text-2xl font-bold font-serif text-blue-900 border-b border-gray-200 mt-6 mb-4;
+  @apply scroll-mt-20 text-2xl font-bold font-serif text-black border-b border-gray-200 mt-6 mb-4;
 }
 
 .markdown h4 {
-  @apply scroll-mt-20 text-xl font-bold font-serif text-blue-900 mt-3 mb-4;
+  @apply scroll-mt-20 text-xl font-bold font-serif text-black mt-3 mb-4;
 }
 
 .markdown p {
