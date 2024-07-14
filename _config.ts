@@ -5,7 +5,6 @@ import jsx from "lume/plugins/jsx_preact.ts";
 import esbuild from "lume/plugins/esbuild.ts";
 import inline from "lume/plugins/inline.ts";
 import nav from "lume/plugins/nav.ts";
-import search from "lume/plugins/search.ts";
 import toc from "https://deno.land/x/lume_markdown_plugins@v0.7.0/toc.ts";
 import anchor from "npm:markdown-it-anchor@9";
 
@@ -30,6 +29,7 @@ const site = lume({}, {
 
 site.copy("static/fonts");
 site.copy("static/js");
+site.copy("static/logos");
 
 site.use(tailwindcss({ options: tailwindConfig }));
 site.use(postcss());
