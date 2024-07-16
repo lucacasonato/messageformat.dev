@@ -187,21 +187,6 @@ translations of all messages in the application.
 This is a {#error}critical{/error} message.
 ```
 
-## Attributes
-
-Placeholders and markup tags can have additional attributes. Attributes start
-with an `@` character, followed by the attribute name. Attributes can also have
-a value, which is separated from the attribute name by an equal sign `=`.
-
-```mf2
-In French, "{|bonjour| @translate=false}" is a greeting.
-```
-
-Attributes must always be placed after the main content of a placeholder or
-markup tag (so after literals, variables, functions, or options).
-
-> TODO: explain why attributes are useful in light of options existing
-
 ## Matchers
 
 Matchers are used to select different variants of a message based on a value.
