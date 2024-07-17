@@ -1,5 +1,7 @@
 export const layout = "layout.vto";
 
+export const title = "Playground";
+
 export default function IndexPage() {
   return (
     <>
