@@ -10,6 +10,7 @@ sidebar:
       - docs/reference/variables/
       - docs/reference/markup/
       - docs/reference/matchers/
+      - docs/reference/patterns/
   - section: Using MF2 with...
     children:
       - docs/integration/js/
