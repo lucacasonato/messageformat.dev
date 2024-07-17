@@ -37,8 +37,6 @@ function autolink(md: MarkdownIt, options: AutolinkOptions) {
         const linkText = parts.length > 1 ? parts[1] : text;
         const link = getReference(linkText);
 
-        console.log({ content, text, linkText, link });
-
         if (link) {
           if (!silent) {
             const token = state.push("link_open", "a", 1);

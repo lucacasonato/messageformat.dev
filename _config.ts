@@ -8,6 +8,8 @@ import nav from "lume/plugins/nav.ts";
 import toc from "https://deno.land/x/lume_markdown_plugins@v0.7.0/toc.ts";
 import anchor from "npm:markdown-it-anchor@9";
 
+import AUTOLINK_REFERENCES from "./references.json" with { type: "json" };
+
 import tailwindConfig from "./tailwind.config.ts";
 import autolink from "./_plugins/autolink.ts";
 
@@ -25,9 +27,7 @@ const site = lume({}, {
         }),
       }],
       [autolink, {
-        references: {
-          function: "/docs/reference/functions",
-        },
+        references: AUTOLINK_REFERENCES,
       }],
     ],
   },
