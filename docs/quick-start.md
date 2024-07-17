@@ -408,11 +408,28 @@ A **local** declaration binds a variable to the value of an expression. `.local`
 ```mf2
 .local $x = {|This is an expression|}
 .local $y = {$now :datetime dateStyle=long}
+{{$y}}
+```
+
+An interesting case that demonstrates the usefulness of `.local` is `.match` statements with multiple variants where you need to reuse a value.
+
+```mf2
+.local $date = {$dt :datetime dateStyle=long}
+.match {$pronouns :string}
+he  {{He joined on {$date}.}}
+she {{She joined on {$date}.}}
+*   {{They joined on {$date}.}}
 ```
 
 ## Input Declarations
 
 An **input** declaration binds a variable to an external input value. It's not required in order to use external input but is a declarative way to verify the presence of (and even the type of) any input.
+
+```mf2
+.input {$count :number}
+```
+
+Furthermore, it's really useful when you want to apply certain formatting options onto an input value everytime it's used within the message.
 
 ```mf2
 .input {$x :number style=percent}
