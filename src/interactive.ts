@@ -16,8 +16,6 @@ export class Mf2Interactive extends HTMLElement {
     this.#locale = this.attributes.getNamedItem("locale")?.value ??
       this.#locale;
 
-    console.log("locale", this.#locale);
-
     const codeEl = this.querySelector("code.language-mf2");
     const code = codeEl?.textContent ?? null;
     const dataEl = this.querySelector("code.language-json");
