@@ -401,10 +401,30 @@ Selectors also need to be separated by spaces.
 Only a single matcher can be used in a message. Matchers can contain multiple
 values to match against, and can contain multiple variants.
 
-## Local Declarations
+## Declarations
 
-TODO
+A declaration assigns a value to a variable within a message. This variable can then be used in other expressions within the same message. Declarations are optional: many messages will not contain any declarations.
 
-## Input Declarations
+An **input** declaration binds a variable to an external input value.
 
-TODO
+A **local** declaration binds a variable to the value of an expression. `.local` is like `const` in JavaScript.
+
+**EXAMPLE**
+```
+.input {$x :number style=percent}
+.local $y = {|This is an expression|}
+{{$y}}
+```
+
+This message works without errors as long as `x` is provided as an external input value. If so, then the annotation in the `.input` declaration is applied to the value passed in for `x`: it's formatted as a number with the style "percent".
+
+`.input` declarations are optional, so a variable that appears without a declaration is assumed to be an external input value.
+
+**EXAMPLE**
+```
+{{$y}}
+```
+
+The formatter signals a runtime error if `y` is not provided as an external input value.
+
+The value of a variable can't refer to itself, and a variable declared with `.local` can't be referenced before they are used. Also, the same variable can't be declared multiple times.
