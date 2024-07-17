@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/js/leader-line.min.js" defer></script>
     <script src="/src/utils.js" inline></script>
+    {{ if url.startsWith('/docs/') }}
+    <script src="/src/interactive.js" type="module"></script>
+    {{ /if }}
     {{ if url == '/playground/' }}
     <script src="/src/playground.js" inline></script>
     {{ /if }}
