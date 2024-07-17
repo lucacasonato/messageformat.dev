@@ -9,3 +9,5 @@ In the example below, `long` is a _literal_. Literals can appear in various cont
 ```
 Today is {$date :datetime weekday=long}.
 ```
+
+The text `|image.png|` is an example of a _quoted_ literal. It has to be quoted because it includes a '.' character. In general, literals containing non-alphanumeric characters have to be quoted.

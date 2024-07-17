@@ -11,5 +11,3 @@ Today is {$date :datetime weekday=long}.
 
 Check out {:img src=|image.png|}.
 ```
-
-The text `|image.png|` is an example of a _quoted_ literal. It has to be quoted because it includes a '.' character. In general, literals containing non-alphanumeric characters have to be quoted.
