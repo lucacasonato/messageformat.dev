@@ -212,23 +212,32 @@ This is the {|pipe \| character|}.
 Markup tags can be used to add rich text formatting to messages. There are three
 types of markup tags: opening, closing, and self-closing.
 
+<mf2-interactive>
+
 ```mf2
 This is {#bold}bold{/bold}.
 ```
 
+</mf2-interactive>
+
+<mf2-interactive>
+
 ```mf2
 This is a star: {#star-icon /}
 ```
+
+</mf2-interactive>
 
 Message Format 2 does not define any specific markup tags. Instead, it is up to
 the application to define the tags that are used in messages. There is also no
 requirement that opening and closing tags must match, or that they are used in a
 hierarchical way.
 
-> Good to know: Because markup tags are defined by the application, they enable
-> portable rich text formatting across different platforms. For example, a
-> `{#bold}` tag could be rendered as a `<b>` tag in HTML, as a `bold` font style
-> in a terminal application, or as a bold text node in a mobile app.
+> Good to know: Because the meaning of markup tags is defined by the
+> application, they enable portable rich text formatting across different
+> platforms. For example, a `{#bold}` tag could be rendered as a `<b>` tag in
+> HTML, as a `bold` font style in a terminal application, or as a bold text node
+> in a mobile app.
 
 ### Markup Options
 
@@ -247,9 +256,13 @@ application decide how to render the message. This makes it easier to change the
 styling of messages across an application without having to modify all
 translations of all messages in the application.
 
+<mf2-interactive>
+
 ```mf2
 This is a {#error}critical{/error} message.
 ```
+
+</mf2-interactive>
 
 ## Matchers
 

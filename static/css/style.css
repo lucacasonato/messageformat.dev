@@ -115,11 +115,11 @@
 }
 
 .markdown ul {
-  @apply list-disc pl-7;
+  @apply list-disc pl-7 my-4;
 }
 
 .markdown ol {
-  @apply list-decimal pl-7;
+  @apply list-decimal pl-7 my-4;
 }
 
 .markdown li {
@@ -135,7 +135,7 @@
 }
 
 .markdown mf2-interactive {
-  @apply border rounded overflow-clip;
+  @apply border rounded overflow-clip my-4;
 }
 
 .markdown mf2-interactive:not(:has(.header))::before {

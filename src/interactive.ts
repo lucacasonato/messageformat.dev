@@ -1,4 +1,4 @@
-import { MessageFormat } from "npm:messageformat@4.0.0-7";
+import { formatMessageToHTML, MessageFormat } from "./_utils/message_format.ts";
 
 export class Mf2Interactive extends HTMLElement {
   #locale: string = "en-US";
@@ -93,13 +93,33 @@ export class Mf2Interactive extends HTMLElement {
       .replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
     this.#share.href = `/playground/${hash}`;
 
+    let message!: MessageFormat;
+    let dataObj!: Record<string, unknown>;
+    let errors: string[] = [];
+
     try {
-      const mf = new MessageFormat(code, this.#locale);
-      const output = mf.format(JSON.parse(data));
-      this.#output.innerText = output;
+      message = new MessageFormat(code, this.#locale);
     } catch (e) {
+      errors = [e.message];
+    }
+
+    try {
+      dataObj = JSON.parse(data);
+    } catch (e) {
+      errors.push(e.message);
+    }
+
+    if (errors.length === 0) {
+      errors = formatMessageToHTML({
+        output: this.#output,
+        message,
+        data: dataObj,
+      });
+    }
+
+    if (errors.length > 0) {
       this.#output.classList.add("error");
-      this.#output.innerText = e.message;
+      this.#output.innerText = errors.join("\n");
     }
   }
 }

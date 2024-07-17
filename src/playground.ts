@@ -1,6 +1,5 @@
-import { MessageFormat } from "npm:messageformat@4.0.0-7";
 import locales from "npm:locale-codes@1.3.1";
-import { MessageExpressionPart } from "npm:messageformat@4.0.0-7";
+import { formatMessageToHTML, MessageFormat } from "./_utils/message_format.ts";
 
 const supportedLocales = locales.all
   .map((locale) => {
@@ -106,95 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (mf2 !== null) {
-      const errors = [];
-      try {
-        const parts = mf2.formatToParts(
-          dataObj,
-          // deno-lint-ignore no-explicit-any
-          (error) => errors.push((error as any).message),
-        );
-        let currentElement: HTMLElement = outputArea;
-        for (const part of parts) {
-          if (part.type === "markup" && "kind" in part) {
-            if (part.kind === "open" || part.kind === "standalone") {
-              switch (part.name) {
-                case "bold": {
-                  const bold = document.createElement("strong");
-                  currentElement.appendChild(bold);
-                  currentElement = bold;
-                  break;
-                }
-                case "italic": {
-                  const italic = document.createElement("em");
-                  currentElement.appendChild(italic);
-                  currentElement = italic;
-                  break;
-                }
-                case "link": {
-                  const link = document.createElement("a");
-                  link.href = part.options?.url as string;
-                  link.target = "_blank";
-                  link.rel = "noopener noreferrer";
-                  currentElement.appendChild(link);
-                  currentElement = link;
-                  break;
-                }
-                default: {
-                  errors.push(`Unknown markup: ${part.name}`);
-                }
-              }
-            }
-            if (part.kind === "close" || part.kind === "standalone") {
-              if (currentElement === outputArea) {
-                errors.push(`Unexpected close: ${part.name}`);
-              }
-              switch (part.name) {
-                case "bold": {
-                  if (currentElement.tagName !== "STRONG") {
-                    errors.push(`Unexpected close: ${part.name}`);
-                  }
-                  break;
-                }
-                case "italic": {
-                  if (currentElement.tagName !== "EM") {
-                    errors.push(`Unexpected close: ${part.name}`);
-                  }
-                  break;
-                }
-                case "link": {
-                  if (currentElement.tagName !== "A") {
-                    errors.push(`Unexpected close: ${part.name}`);
-                  }
-                  break;
-                }
-                default: {
-                  errors.push(`Unknown markup: ${part.name}`);
-                  continue;
-                }
-              }
-              currentElement = currentElement.parentElement!;
-            }
-          } else {
-            const p = part as MessageExpressionPart;
-            let text = "";
-            if (p.parts) {
-              for (const part of p.parts) {
-                text += String(part.value);
-              }
-            } else if (p.value) {
-              text = String(p.value);
-            } else {
-              text = p.source;
-            }
-            currentElement.appendChild(document.createTextNode(text));
-          }
-        }
-        if (currentElement !== outputArea) {
-          errors.push("Unclosed markup");
-        }
-      } catch (e) {
-        errors.push(e.message);
-      }
+      const errors = formatMessageToHTML({
+        output: outputArea,
+        message: mf2,
+        data: dataObj,
+      });
       if (errors.length > 0) {
         outputErrors.textContent = errors.join("\n");
         outputErrors.hidden = false;

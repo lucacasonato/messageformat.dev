@@ -208,14 +208,25 @@ export default function IndexPage() {
                   <td class="border px-2">
                     <code>bold</code>
                   </td>
-                  <td class="border px-2">Make the contained message bold.</td>
+                  <td class="border px-2">
+                    Make the contained message <b>bold</b>.
+                  </td>
                 </tr>
                 <tr>
                   <td class="border px-2">
                     <code>italic</code>
                   </td>
                   <td class="border px-2">
-                    Make the contained message italic.
+                    Make the contained message <i>italic</i>.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border px-2">
+                    <code>error</code>
+                  </td>
+                  <td class="border px-2">
+                    Make the contained look{" "}
+                    <span class="text-red-600">errored</span>.
                   </td>
                 </tr>
                 <tr>
@@ -224,6 +235,14 @@ export default function IndexPage() {
                   </td>
                   <td class="border px-2">
                     Add a link, pointing to the <code>url</code> option.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border px-2">
+                    <code>star-icon</code>
+                  </td>
+                  <td class="border px-2">
+                    Display a star icon (⭐).
                   </td>
                 </tr>
               </tbody>
