@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localeSelect.value = locale;
       onUpdate();
     }
-  } catch (e) {
+  } catch (_) {
     // Ignore errors
   }
 
