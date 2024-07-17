@@ -127,9 +127,70 @@
 }
 
 .markdown :not(pre)>code {
-  @apply bg-gray-100 p-1 rounded;
+  @apply bg-gray-100 p-1 rounded font-mono;
 }
 
 .markdown pre {
-  @apply bg-gray-100 p-4 rounded;
+  @apply bg-gray-100 p-4 rounded font-mono text-base;
+}
+
+.markdown mf2-interactive {
+  @apply border rounded overflow-clip;
+}
+
+.markdown mf2-interactive:not(:has(.header))::before {
+  @apply text-xs h-6 flex items-center px-4 justify-between font-medium uppercase;
+  content: "TRY IT OUT";
+}
+
+.markdown mf2-interactive:not(:has(.header))::after {
+  @apply py-2 px-4 text-base block text-gray-400;
+  content: "Loading..."
+}
+
+.markdown mf2-interactive:not(:has(.header)) pre {
+  @apply rounded-none cursor-wait;
+}
+
+.markdown mf2-interactive:not(:has(.header)) pre:not(:first-of-type) {
+  @apply border-t py-2;
+}
+
+.markdown mf2-interactive .header {
+  @apply text-xs h-6 flex items-center px-4 justify-between;
+}
+
+.markdown mf2-interactive .header .title {
+  @apply font-medium uppercase;
+}
+
+.markdown mf2-interactive .header div {
+  @apply flex items-center gap-4
+}
+
+.markdown mf2-interactive .header a {
+  @apply flex items-center gap-1
+}
+
+
+.markdown mf2-interactive textarea {
+  @apply bg-gray-100 p-4 w-full font-mono block text-base outline-none rounded-none focus:ring-2 focus:ring-inset focus:ring-blue-500 focus:ring-opacity-50;
+  field-sizing: content;
+}
+
+.markdown mf2-interactive textarea.data {
+  @apply border-t px-4 py-2;
+}
+
+.markdown mf2-interactive .output {
+  @apply py-2 px-4 text-base min-h-10;
+}
+
+.markdown mf2-interactive .error {
+  @apply font-mono text-red-600;
+}
+
+
+mf2-interactive {
+  @apply block;
 }
