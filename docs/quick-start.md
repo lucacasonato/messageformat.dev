@@ -73,7 +73,7 @@ be numbers, strings, dates, or even lists.
 
 ## Functions
 
-How placeholders behave can be modified with functions. Functions are prefixed
+How placeholders behave can be modified with {functions}. Functions are prefixed
 with a colon `:`. Functions are often used to format values in particular ways.
 
 <mf2-interactive>
@@ -394,7 +394,6 @@ she *    {{She has {$count} notifications.}}
 ```
 
 </mf2-interactive>
-
 
 When specifying multiple values to match on, the values are separated by spaces.
 Selectors also need to be separated by spaces.

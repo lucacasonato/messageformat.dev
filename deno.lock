@@ -54,6 +54,7 @@
       "npm:estree-walker@3.0.3": "npm:estree-walker@3.0.3",
       "npm:get-google-fonts": "npm:get-google-fonts@1.2.2",
       "npm:locale-codes@1.3.1": "npm:locale-codes@1.3.1",
+      "npm:markdown-it": "npm:markdown-it@14.1.0",
       "npm:markdown-it-anchor@9": "npm:markdown-it-anchor@9.0.1_@types+markdown-it@14.1.1_markdown-it@14.1.0",
       "npm:markdown-it-attrs@4.1.6": "npm:markdown-it-attrs@4.1.6_markdown-it@14.1.0",
       "npm:markdown-it-deflist@3.0.0": "npm:markdown-it-deflist@3.0.0",

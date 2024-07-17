@@ -149,7 +149,7 @@
 }
 
 .markdown mf2-interactive:not(:has(.header)) pre {
-  @apply rounded-none cursor-wait;
+  @apply rounded-none cursor-wait whitespace-pre-wrap;
 }
 
 .markdown mf2-interactive:not(:has(.header)) pre:not(:first-of-type) {

@@ -9,6 +9,7 @@ import toc from "https://deno.land/x/lume_markdown_plugins@v0.7.0/toc.ts";
 import anchor from "npm:markdown-it-anchor@9";
 
 import tailwindConfig from "./tailwind.config.ts";
+import autolink from "./_plugins/autolink.ts";
 
 const site = lume({}, {
   markdown: {
@@ -22,6 +23,11 @@ const site = lume({}, {
             `<span class="sr-only">Jump to heading</span><span aria-hidden="true" class="anchor">#</span>`,
           placement: "after",
         }),
+      }],
+      [autolink, {
+        references: {
+          function: "/docs/reference/functions",
+        },
       }],
     ],
   },
