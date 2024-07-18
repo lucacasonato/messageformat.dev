@@ -416,8 +416,68 @@ values to match against, and can contain multiple variants.
 
 ## Local Declarations
 
-TODO
+A **local** declaration binds a variable to the value of an expression. `.local` is like `const` in JavaScript. Think of it as a convenient way to reuse the result of an operation without repeating it.
+
+<mf2-interactive>
+
+```mf2
+.local $x = {|This is an expression|}
+.local $y = {$now :datetime dateStyle=long}
+{{{$x} from {$y}}}
+```
+
+```json
+{"now": "2021-04-03"}
+```
+
+</mf2-interactive>
+
+An interesting case that demonstrates the usefulness of `.local` is `.match` statements with multiple variants where you need to reuse a value.
+
+<mf2-interactive>
+
+```mf2
+.local $date = {$dt :datetime dateStyle=long}
+.match {$pronouns :string}
+he  {{He joined on {$date}.}}
+she {{She joined on {$date}.}}
+*   {{They joined on {$date}.}}
+```
+
+```json
+{"dt": "2021-04-03", "pronouns": "she"}
+```
+
+</mf2-interactive>
 
 ## Input Declarations
 
-TODO
+An **input** declaration binds a variable to an external input value. It's not required in order to use external input but is a declarative way to verify the presence of (and even the type of) any input.
+
+<mf2-interactive>
+
+```mf2
+.input {$count :number}
+{{{$count} Mississippi}}
+```
+
+```json
+{"count": 5}
+```
+
+</mf2-interactive>
+
+Furthermore, it's really useful when you want to apply certain formatting options onto an input value everytime it's used within the message.
+
+<mf2-interactive>
+
+```mf2
+.input {$x :number style=percent}
+{{{$x}}}
+```
+
+```json
+{"x": 0.42}
+```
+
+</mf2-interactive>
