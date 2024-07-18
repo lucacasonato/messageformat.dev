@@ -5,11 +5,15 @@ description: Matchers enable pluralization and gender selection based on message
 
 A _matcher_ is a feature in MessageFormat that lets you group together different _variants_ of a message, in which one variant is chosen based on runtime data.
 
+<mf2-interactive>
+
 ```mf2
 .match {$count :number}
 one {{You have {$count} week.}}
 *   {{You have {$count} weeks.}}
 ```
+
+</mf2-interactive>
 
 The annotation on the variable `$count` determines how selection is done. In this case, the annotation `:number` means that `$count` is examined as a numerical value based on its plural category, which happens to be the default selection category for numbers (the other options include ordinal categories for instance). `:number` is an example of a _selector function_. You might remember that `:number` is also a _formatting function_. Some functions are both a selector and a formatter, while others can only be one or the other.
 
@@ -40,6 +44,8 @@ The details of how values are matched again keys depend on the annotation of the
 While English only has two plural categories, there are other natural languages that
 have more categories. Consider translating the example into Polish:
 
+<mf2-interactive>
+
 ```mf2
 .match {$count :number}
 one {{Masz {$count} tydzień.}}
@@ -48,6 +54,8 @@ many {{Masz {$count} tygodni.}}
 other {{Masz {$count} tygodnia.}}
 * {{Masz {$count} tygodnia.}}
 ```
+
+</mf2-interactive>
 
 This shows why the `:number` selector is useful: when translating the first example
 from English to Polish, the translator knows how to create a Polish version
