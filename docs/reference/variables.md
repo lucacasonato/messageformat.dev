@@ -13,8 +13,12 @@ A **local** declaration binds a variable to the value of an expression. `.local`
 
 ```mf2
 .input {$x :number style=percent}
-.local $y = {|This is an expression|}
-{{$y}}
+.local $y = {|an expression|}
+{{{$x} of {$y}}}
+```
+
+```json
+{"x": 0.42}
 ```
 
 </mf2-interactive>
@@ -26,7 +30,11 @@ This message works without errors as long as `x` is provided as an external inpu
 <mf2-interactive>
 
 ```mf2
-{{$y}}
+{$y}
+```
+
+```json
+{"y": "i can be anything"}
 ```
 
 </mf2-interactive>

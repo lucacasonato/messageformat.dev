@@ -13,6 +13,10 @@ one {{You have {$count} week.}}
 *   {{You have {$count} weeks.}}
 ```
 
+```json
+{"count": 15}
+```
+
 </mf2-interactive>
 
 The annotation on the variable `$count` determines how selection is done. In this case, the annotation `:number` means that `$count` is examined as a numerical value based on its plural category, which happens to be the default selection category for numbers (the other options include ordinal categories for instance). `:number` is an example of a _selector function_. You might remember that `:number` is also a _formatting function_. Some functions are both a selector and a formatter, while others can only be one or the other.
@@ -48,11 +52,15 @@ have more categories. Consider translating the example into Polish:
 
 ```mf2
 .match {$count :number}
-one {{Masz {$count} tydzień.}}
-few {{Masz {$count} tygodnie.}}
-many {{Masz {$count} tygodni.}}
+one   {{Masz {$count} tydzień.}}
+few   {{Masz {$count} tygodnie.}}
+many  {{Masz {$count} tygodni.}}
 other {{Masz {$count} tygodnia.}}
-* {{Masz {$count} tygodnia.}}
+*     {{Masz {$count} tygodnia.}}
+```
+
+```json
+{"count": 5}
 ```
 
 </mf2-interactive>

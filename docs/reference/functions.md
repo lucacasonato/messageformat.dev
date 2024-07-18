@@ -13,4 +13,8 @@ Today is {$date :datetime weekday=long}.
 Check out {:img src=|image.png|}.
 ```
 
+```json
+{"date": "2024-06-06"}
+```
+
 </mf2-interactive>

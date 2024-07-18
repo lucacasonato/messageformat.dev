@@ -13,6 +13,10 @@ Almost anything not beginning with a `.` or a `{{` is an _unquoted pattern_ in M
 This is a pattern. It can include expressions like {$v} and {#b}markup{/b}.
 ```
 
+```json
+{"v": "this"}
+```
+
 </mf2-interactive>
 
 There are certain characters that can't appear in an unquoted pattern. You probably won't run into these at first.
@@ -47,6 +51,10 @@ Note that whitespace in text, including tabs, spaces, and newlines is significan
 {{   This is the {$num} pattern   }}
 ```
 
+```json
+{"num": 5}
+```
+
 </mf2-interactive>
 
 An example with escaped characters:
@@ -58,9 +66,3 @@ Backslash: \\, left curly brace \{, right curly brace \}
 ```
 
 </mf2-interactive>
-
-This example formats to the string:
-
-```
-Backslash: \, left curly brace {, right curly brace }
-```

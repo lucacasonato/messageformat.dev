@@ -410,7 +410,11 @@ A **local** declaration binds a variable to the value of an expression. `.local`
 ```mf2
 .local $x = {|This is an expression|}
 .local $y = {$now :datetime dateStyle=long}
-{{$y}}
+{{{$x} from {$y}}}
+```
+
+```json
+{"now": "2021-04-03"}
 ```
 
 </mf2-interactive>
@@ -427,6 +431,10 @@ she {{She joined on {$date}.}}
 *   {{They joined on {$date}.}}
 ```
 
+```json
+{"dt": "2021-04-03", "pronouns": "she"}
+```
+
 </mf2-interactive>
 
 ## Input Declarations
@@ -437,6 +445,11 @@ An **input** declaration binds a variable to an external input value. It's not r
 
 ```mf2
 .input {$count :number}
+{{{$count} Mississippi}}
+```
+
+```json
+{"count": 5}
 ```
 
 </mf2-interactive>
@@ -447,6 +460,11 @@ Furthermore, it's really useful when you want to apply certain formatting option
 
 ```mf2
 .input {$x :number style=percent}
+{{{$x}}}
+```
+
+```json
+{"x": 0.42}
 ```
 
 </mf2-interactive>
