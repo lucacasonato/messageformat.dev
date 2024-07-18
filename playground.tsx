@@ -27,13 +27,13 @@ export default function IndexPage() {
             <div>
               <a
                 href="/"
-                class="text-blue-50
+                class="text-white
          font-serif font-bold text-2xl hover:underline underline-offset-4"
               >
                 MessageFormat 2
               </a>
-              <span class="mx-2 text-blue-50 select-none">/</span>
-              <span class="text-blue-50 text-lg">Playground</span>
+              <span class="mx-2 text-white select-none">/</span>
+              <span class="text-white text-lg">Playground</span>
             </div>
             <div class="flex gap-6 items-end">
               <div class="flex flex-col">
