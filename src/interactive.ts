@@ -85,6 +85,7 @@ export class Mf2Interactive extends HTMLElement {
     const data = this.#dataInput?.value ?? "{}";
 
     this.#output.classList.remove("error");
+    this.#output.innerHTML = "";
 
     const encodedMessage = btoa(code);
     const encodedData = btoa(data);
