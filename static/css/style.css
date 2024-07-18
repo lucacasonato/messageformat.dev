@@ -138,21 +138,21 @@
   @apply border rounded overflow-clip my-4;
 }
 
-.markdown mf2-interactive:not(:has(.header))::before {
+.markdown mf2-interactive:not(.ready)::before {
   @apply text-xs h-6 flex items-center px-4 justify-between font-medium uppercase;
   content: "TRY IT OUT";
 }
 
-.markdown mf2-interactive:not(:has(.header))::after {
+.markdown mf2-interactive:not(.ready)::after {
   @apply py-2 px-4 text-base block text-gray-400;
   content: "Loading..."
 }
 
-.markdown mf2-interactive:not(:has(.header)) pre {
+.markdown mf2-interactive:not(.ready) pre {
   @apply rounded-none cursor-wait whitespace-pre-wrap;
 }
 
-.markdown mf2-interactive:not(:has(.header)) pre:not(:first-of-type) {
+.markdown mf2-interactive:not(.ready) pre:not(:first-of-type) {
   @apply border-t py-2;
 }
 
