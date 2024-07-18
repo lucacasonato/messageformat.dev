@@ -3,6 +3,8 @@ title: Syntax Guide
 description: A guide to the various syntactic features of MF2
 ---
 
+<!-- NOTE: This document is not officially included in the rendered version of the docs, it's supposed to be eventually removed once all of its content ends up elsewhere -->
+
 `MessageFormat` is a new functionality that can act as a Swiss Army knife for many of your i18n needs, allowing you to localize interfaces with great ease. `MessageFormat` is currently in "tech preview" mode, with an alpha release.
 
 ## What is a "Message"?

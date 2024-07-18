@@ -9,8 +9,7 @@ An **input** declaration binds a variable to an external input value.
 
 A **local** declaration binds a variable to the value of an expression. `.local` is like `const` in JavaScript.
 
-**EXAMPLE**
-```
+```mf2
 .input {$x :number style=percent}
 .local $y = {|This is an expression|}
 {{$y}}
@@ -20,8 +19,7 @@ This message works without errors as long as `x` is provided as an external inpu
 
 `.input` declarations are optional, so a variable that appears without a declaration is assumed to be an external input value.
 
-**EXAMPLE**
-```
+```mf2
 {{$y}}
 ```
 

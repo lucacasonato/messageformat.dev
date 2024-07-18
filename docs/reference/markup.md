@@ -5,8 +5,7 @@ description: Markup allows localized messages to be richly formatted.
 
 Another type of placeholder is a _markup placeholder_. A markup placeholder can be "open", "close", or "standalone". This example shows open and close markup placeholders.
 
-**EXAMPLE**
-```
+```mf2
 Click {#link}here{/link}. {#b}{$count}{/b}
 ```
 

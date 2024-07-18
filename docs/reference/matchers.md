@@ -5,8 +5,7 @@ description: Matchers enable pluralization and gender selection based on message
 
 A _matcher_ is a feature in MessageFormat that lets you group together different _variants_ of a message, in which one variant is chosen based on runtime data.
 
-**EXAMPLE**
-```
+```mf2
 .match {$count :number}
 one {{You have {$count} week.}}
 *   {{You have {$count} weeks.}}
@@ -41,8 +40,7 @@ The details of how values are matched again keys depend on the annotation of the
 While English only has two plural categories, there are other natural languages that
 have more categories. Consider translating the example into Polish:
 
-**EXAMPLE**
-```
+```mf2
 .match {$count :number}
 one {{Masz {$count} tydzień.}}
 few {{Masz {$count} tygodnie.}}
