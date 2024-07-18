@@ -168,10 +168,13 @@
   @apply flex items-center gap-4
 }
 
-.markdown mf2-interactive .header a {
+.markdown mf2-interactive .header a, button {
   @apply flex items-center gap-1
 }
 
+.markdown mf2-interactive .header button {
+  @apply underline underline-offset-4 hover:text-blue-600 disabled:no-underline disabled:text-gray-500;
+}
 
 .markdown mf2-interactive textarea {
   @apply bg-gray-100 p-4 w-full font-mono block text-base outline-none rounded-none focus:ring-2 focus:ring-inset focus:ring-blue-500 focus:ring-opacity-50;

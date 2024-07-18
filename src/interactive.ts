@@ -3,9 +3,13 @@ import { formatMessageToHTML, MessageFormat } from "./_utils/message_format.ts";
 export class Mf2Interactive extends HTMLElement {
   #locale: string = "en-US";
 
+  #originalCode: string = "";
+  #originalData: string = "{}";
+
   #codeInput: HTMLTextAreaElement | null = null;
   #dataInput: HTMLTextAreaElement | null = null;
   #output: HTMLDivElement | null = null;
+  #reset: HTMLButtonElement | null = null;
   #share: HTMLAnchorElement | null = null;
 
   constructor() {
@@ -25,7 +29,7 @@ export class Mf2Interactive extends HTMLElement {
     if (code !== null) {
       this.#codeInput = document.createElement("textarea");
       this.#codeInput.classList.add("code");
-      this.#codeInput.value = code.replace(/\n$/, "");
+      this.#originalCode = this.#codeInput.value = code.replace(/\n$/, "");
       this.#codeInput.spellcheck = false;
       // temporary fix for browsers that don't have `field-sizing: content;` yet
       this.#codeInput.rows = this.#codeInput.value.split("\n").length;
@@ -38,7 +42,7 @@ export class Mf2Interactive extends HTMLElement {
     if (data !== null) {
       this.#dataInput = document.createElement("textarea");
       this.#dataInput.classList.add("data");
-      this.#dataInput.value = data.replace(/\n$/, "");
+      this.#originalData = this.#dataInput.value = data.replace(/\n$/, "");
       this.#dataInput.spellcheck = false;
       // temporary fix for browsers that don't have `field-sizing: content;` yet
       this.#dataInput.rows = this.#dataInput.value.split("\n").length;
@@ -54,6 +58,22 @@ export class Mf2Interactive extends HTMLElement {
     title.classList.add("title");
     title.textContent = "TRY IT OUT";
     const actions = document.createElement("div");
+    this.#reset = document.createElement("button");
+    this.#reset.classList.add("reset");
+    this.#reset.disabled = true;
+    this.#reset.innerHTML =
+      `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 0.825rem; height: 0.825rem"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg> Reset`;
+    actions.appendChild(this.#reset);
+    this.#reset.addEventListener("click", () => {
+      this.#reset!.disabled = true;
+      if (this.#codeInput !== null) {
+        this.#codeInput.value = this.#originalCode;
+      }
+      if (this.#dataInput !== null) {
+        this.#dataInput.value = this.#originalData;
+      }
+      this.#onChange();
+    });
     const locale = document.createElement("span");
     locale.classList.add("locale");
     locale.textContent = this.#locale;
@@ -84,6 +104,9 @@ export class Mf2Interactive extends HTMLElement {
 
     const code = this.#codeInput.value;
     const data = this.#dataInput?.value ?? "{}";
+
+    this.#reset!.disabled = code === this.#originalCode &&
+      data === this.#originalData;
 
     this.#output.classList.remove("error");
     this.#output.innerHTML = "";
