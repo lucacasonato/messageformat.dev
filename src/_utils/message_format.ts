@@ -43,10 +43,10 @@ export function formatMessageToHTML(
               break;
             }
             case "error": {
-              const errorred = document.createElement("span");
-              errorred.classList.add("text-red-600");
-              currentElement.appendChild(errorred);
-              currentElement = errorred;
+              const errored = document.createElement("span");
+              errored.classList.add("text-red-600");
+              currentElement.appendChild(errored);
+              currentElement = errored;
               break;
             }
             case "link": {
@@ -102,11 +102,15 @@ export function formatMessageToHTML(
       } else {
         const p = part as MessageExpressionPart;
         let text = "";
-        if (p.parts) {
+        if (p.parts !== undefined) {
           for (const part of p.parts) {
-            text += String(part.value);
+            if (part.value !== undefined) {
+              text = String(part.value);
+            } else {
+              text = String(part.source);
+            }
           }
-        } else if (p.value) {
+        } else if (p.value !== undefined) {
           text = String(p.value);
         } else {
           text = p.source;
