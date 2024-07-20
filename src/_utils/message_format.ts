@@ -107,13 +107,13 @@ export function formatMessageToHTML(
             if (part.value !== undefined) {
               text = String(part.value);
             } else {
-              text = String(part.source);
+              text = String(`{${p.source}}`);
             }
           }
         } else if (p.value !== undefined) {
           text = String(p.value);
         } else {
-          text = p.source;
+          text = `{${p.source}}`;
         }
         currentElement.appendChild(document.createTextNode(text));
       }
