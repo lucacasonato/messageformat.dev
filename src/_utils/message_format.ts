@@ -105,9 +105,10 @@ export function formatMessageToHTML(
         if (p.parts !== undefined) {
           for (const part of p.parts) {
             if (part.value !== undefined) {
-              text = String(part.value);
+              text += String(part.value);
             } else {
               text = String(`{${p.source}}`);
+              break;
             }
           }
         } else if (p.value !== undefined) {
