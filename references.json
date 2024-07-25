@@ -1,3 +1,9 @@
 {
-  "function": "/docs/reference/functions"
+  "function": "/docs/reference/functions",
+  "pattern": "/docs/reference/patterns",
+  "placeholder": "",
+  "expression": "",
+  "function option": "",
+  "markup option": "",
+  "resolved value": ""
 }
