@@ -24,8 +24,9 @@ You can also try out Message Format 2 in the online playground:
 ### Text
 
 A simple message is just plain text. All Unicode characters can be used in text.
-The only special characters are curly braces `{}` — they need to be escaped.
-Messages can also not start with the `.` character.
+The only special characters are the backslash `\`
+and curly braces `{}` — they need to be escaped.
+Simple messages also cannot start with the `.` character.
 
 <mf2-interactive>
 
@@ -37,8 +38,10 @@ Hello, World!
 
 ### Escapes
 
-Escape special characters with a backslash `\`. In text, only curly braces need
-to be escaped. In literal quotes, `|` may also be escaped.
+Escape special characters with a backslash `\`. In text, only backslashes
+and curly braces need
+to be escaped. In quoted [literals](/docs/reference/literals/),
+`|` may also be escaped.
 
 <mf2-interactive>
 
@@ -53,7 +56,7 @@ Curly braces: \{ and \}
 Placeholders are used to dynamically insert values into messages. Placeholders
 are enclosed in curly braces `{}`.
 
-To insert a variable into a message, use the variable name inside curly braces,
+To insert a [variable](/docs/reference/variables/) into a message, use the variable name inside curly braces,
 preceded by a dollar sign `$`.
 
 <mf2-interactive>
@@ -88,13 +91,13 @@ It is the {$today :datetime} today.
 
 </mf2-interactive>
 
-Message Format 2 has multiple built in functions. These allow you, for example,
+Message Format 2 has multiple built-in functions. These allow you, for example,
 to format numbers in a locale appropriate way. See the
 [full list of built-in functions](/docs/reference/functions/).
 
 ### Function Options
 
-Functions can have options (arguments). Options are key-value pairs separated by
+Functions can have options (named arguments). Options are key-value pairs separated by
 an equal sign `=`. Options are separated by spaces.
 
 <mf2-interactive>
@@ -109,12 +112,12 @@ It is the {$today :datetime dateStyle=long timeStyle=long} today.
 
 </mf2-interactive>
 
-Options can be used to modify the behaviour of functions, for example changing
+Options can be used to modify the behaviour of functions: for example, changing
 whether time formatting should use AM/PM, or the 24 hour clock.
 
 ## Literals
 
-In addition to variables, placeholders can contain literals. Literals are also
+In addition to variables, placeholders can contain [literals](/docs/reference/literals/). Literals are also
 used as the values of options. Literals can be text or numbers.
 
 ### Number
@@ -197,7 +200,7 @@ My name is {|John Doe|}.
 </mf2-interactive>
 
 Quoted text can also contain escapes, just like in simple messages. In quoted
-text, only `|` must be escaped.
+text, only `\` and `|` must be escaped.
 
 <mf2-interactive>
 
@@ -289,6 +292,9 @@ required to specify the type of the value to match on.
 After the match value, there is a block of variants. Each variant starts with
 the value to match on, followed by a message enclosed in double curly braces
 `{{}}`. The special value `*` is used to match any value.
+The values to match on in a variant are called "keys".
+In the above example, `one` is the key for the first variant.
+
 
 ### String Matching
 
@@ -311,7 +317,7 @@ she {{She is a good person.}}
 
 </mf2-interactive>
 
-Values in selectors are literals. This means to have a selector that matches on
+Keys in variants are literals. This means to have a key that matches on
 a space or special character, it must be quoted.
 
 <mf2-interactive>
@@ -332,7 +338,7 @@ a space or special character, it must be quoted.
 ### Number Matching
 
 Other values can have more complex match behaviours. Numbers can match on exact
-values, but also on locale specific plural categories:
+values, but also on locale-specific plural categories:
 
 <mf2-interactive>
 
@@ -385,7 +391,7 @@ few {{You are {$count}rd.}}
 
 </mf2-interactive>
 
-### Muli-Value Matching
+### Multi-Value Matching
 
 Matchers can also match on multiple values. This is useful when a message needs
 to be selected based on multiple different values:
@@ -409,7 +415,7 @@ she *    {{She has {$count} notifications.}}
 </mf2-interactive>
 
 When specifying multiple values to match on, the values are separated by spaces.
-Selectors also need to be separated by spaces.
+Keys also need to be separated by spaces.
 
 Only a single matcher can be used in a message. Matchers can contain multiple
 values to match against, and can contain multiple variants.
@@ -467,7 +473,7 @@ An **input** declaration binds a variable to an external input value. It's not r
 
 </mf2-interactive>
 
-Furthermore, it's really useful when you want to apply certain formatting options onto an input value everytime it's used within the message.
+Furthermore, it's really useful when you want to apply certain formatting options onto an input value every time it's used within the message.
 
 <mf2-interactive>
 
