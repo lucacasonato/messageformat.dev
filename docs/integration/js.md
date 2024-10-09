@@ -13,13 +13,13 @@ More advanced uses are possible, which are documented in the API documentation.
 Install/add the package to your project. If you're using Node.js with npm, you can do this by running
 
 ```sh
-npm install --save-exact messageformat@next
+npm install --save-exact messageformat@4.0.0-7
 ```
 
 or use the corresponding operation for your preferred package manager. For instance, for Deno projects, you can run
 
 ```sh
-deno add npm:messageformat@next
+deno add npm:messageformat@4.0.0-7
 ```
 
 once that's done, you can import the contructor in your code like
@@ -27,6 +27,9 @@ once that's done, you can import the contructor in your code like
 ```js
 import { MessageFormat } from 'messageformat';
 ```
+
+> This documentation is based on `messageformat@4.0.0-7` and may not
+> work for subsequent versions of the package.
 
 ## The `MessageFormat` class
 
@@ -173,3 +176,4 @@ Since an expression's contents vary depending on input,
 
 See the full [MessageExpressionPart](https://messageformat.github.io/messageformat/api/messageformat.messageexpressionpart/)
 documentation for more.
+
