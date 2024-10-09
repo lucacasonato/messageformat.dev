@@ -12,7 +12,7 @@ variable name can't start with a number.
 
 ## Usage
 
-Variables can be interpolated into a message using a {placeholder expression}.
+Variables can be interpolated into a message using a placeholder expression.
 
 <mf2-interactive>
 
@@ -26,7 +26,8 @@ Your name is {$name}.
 
 </mf2-interactive>
 
-Variables can be used in {function options} and {markup options}.
+Variables can be used in [function](/docs/reference/functions/) options
+and [markup](/docs/reference/markup/) options.
 
 <mf2-interactive>
 
@@ -63,9 +64,9 @@ that evaluates to the value of the variable.
 
 </mf2-interactive>
 
-Expressions inside of a `.local` statement can contain contain literals and
+Expressions inside of a `.local` statement can contain literals and
 functions. They can also reference other variables (local and external ones).
-When referencing a variable, they can not reference themselves or variables that
+When referencing a variable, they cannot reference themselves or variables that
 are declared syntactically _after_ them — only variables that are declared
 _before_ them.
 
@@ -84,15 +85,48 @@ _before_ them.
 ### Input declarations
 
 Input declarations are similar to local declarations, but they are used to
-redeclare external input values as local variables. This can be useful to assert
-a specific type or format for an input value (e.g. to ensure that a passed value
-is always an integer). It can also be useful to ensure that an input variable is
+explicitly name an external input value.
+This can be useful to annotate an input value with a specific type or format:
+
+<mf2-interactive>
+
+```mf2
+.input {$count :number}
+{{The count is: {$count}}}
+```
+
+```json
+{ "count": 32 }
+```
+
+</mf2-interactive>
+
+Because the `:number` annotation results in a formatting error if
+the value of `$count` is non-numeric, annotating `$count` explicitly
+makes it easier to detect if a non-numeric value is accidentally passed in:
+
+<mf2-interactive>
+
+```mf2
+.input {$count :number}
+{{The count is: {$count}}}
+```
+
+```json
+{ "count": "not a number" }
+```
+
+</mf2-interactive>
+
+Notice the error message "Input is not numeric".
+
+Input declarations can also be useful to ensure that an input variable is
 always formatted in a specific way.
 
 Input declarations are declared using a `.input` statement. The declaration is
-followed by an {expression}, specifically a variable expression. The variable in
-this expression is both the input variable being referenced, and the name of the
-local variable being declared.
+followed by an expression, specifically an expression whose operand is a variable.
+The variable in this expression is both the input variable being referenced,
+and the name of the local variable being declared.
 
 <mf2-interactive>
 
@@ -112,11 +146,11 @@ always passed. It acts as a form of documentation for both the developer and the
 translator: it tells the developer that the message expects a `count` variable,
 and it tells the translator that the message gets a `count` variable passed in.
 
-Ideally expressions in `.input` should also specify a {function} like `:string`,
-`:number`, or `:datetime`. These functions are not type assertions. They act as
-type coercions, converting the external input value to the specified type, by
-passing the value through the specified function (creating a new {resolved
-value}). This also means that formatting options can be specified in the
+Ideally expressions in `.input` should also specify a [function](/docs/reference/functions).
+like `:string`, `:number`, or `:datetime`. These functions are not type assertions.
+They act as type coercions, returning a new value of the specified type
+based on the operand (or signaling an error if no coercion is possible).
+This also means that formatting options can be specified in the
 function.
 
 <mf2-interactive>
@@ -134,7 +168,10 @@ function.
 
 ### Shadowing and redeclaration
 
-Declared variables shadow external input values with the same name.
+If a local variable has the same name as an external input value,
+the local variable shadows the external one. That is, the meaning
+of any subsequent references to the variable name is the value
+bound to the _local_ variable.
 
 <mf2-interactive>
 
@@ -161,3 +198,56 @@ variable will result in an error.
 ```
 
 </mf2-interactive>
+
+The same rule applies to `.input` declarations:
+
+<mf2-interactive>
+
+```mf2
+.input {$count :number}
+.local $count = {32}
+{{The count is: {$count}}}
+```
+
+```json
+{ "count": 32 }
+```
+</mf2-interactive>
+
+The `.local` declaration causes an error because there is already
+an `.input` declaration for `$count`. The same thing happens if
+the `.local` and `.input` declarations are swapped:
+
+<mf2-interactive>
+
+```mf2
+.local $count = {32}
+.input {$count :number}
+{{The count is: {$count}}}
+```
+
+```json
+{ "count": 32 }
+```
+</mf2-interactive>
+
+
+Another rule is that referring to an external input variable creates an
+_implicit_ declaration, and the "variables can only be declared once"
+rule applies to implicit declarations as well:
+
+<mf2-interactive>
+
+```mf2
+.local $count1 = {$count}
+.local $count = {32}
+{{The count is: {$count}}}
+```
+
+</mf2-interactive>
+
+Notice that this also causes a "duplicate declaration" error, even though
+there was no `.local` declaration for `$count` before it was used in
+the declaration of `$count1`. Why? Because when `$count` is first used,
+that creates an _implicit_ declaration of `$count`; so the subsequent
+`.local $count` declaration is considered a duplicate declaration.
