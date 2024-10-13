@@ -1,6 +1,6 @@
 ---
-title: Using MF2 with JavaScript
-sidebar_title: JavaScript
+title: Using MF2 with JavaScript and TypeScript
+sidebar_title: JavaScript/TypeScript
 ---
 
 The following guide explains how to use the `mf2-messageformat` package to format MF2 messages.
@@ -189,9 +189,10 @@ constructor as part of the third argument:
 
 ```js
 mf = new messageformat.MessageFormat(
-         "{messageformat :uppercase}",
          ['en'],
-         { functions : { uppercase } } )
+         "{messageformat :uppercase}",
+         { functions : { uppercase } }
+         )
 ```
 
 If we invoke `mf.format()`, we get the result `CAT`.
@@ -228,7 +229,7 @@ gives the same result). But with our function as-is, we get an error:
 
 ```
 > const message = ".local $c = {cat :uppercase} .local $c1 = {$c :uppercase} {{{$c1}}}"
-> mf = new messageformat.MessageFormat(message, ['en'], { functions : { uppercase } } )
+> mf = new messageformat.MessageFormat(['en'], message, { functions : { uppercase } } )
 > mf.format()
 '{�}'
 > (node:1250142) TypeError: value.toUpperCase is not a function
