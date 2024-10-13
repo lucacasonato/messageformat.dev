@@ -36,10 +36,10 @@ The class has two methods you are likely to call:
 
 ### The `MessageFormat` constructor
 
-The constructor takes a message string and one or more locales. Example:
+The constructor takes one or more locales and a message string. Example:
 
 ```js
-const mf = new MessageFormat("Hello {$user}", ["en", "fr"]);
+const mf = new MessageFormat(["en", "fr"], "Hello {$user}");
 ```
 
 `mf` is now a message formatter object that can be re-used to format the same
@@ -55,7 +55,7 @@ The `format()` method formats the message formatter's message as a string.
 Example:
 
 ```js
-const mf = new MessageFormat("Hello {$user}", "en");
+const mf = new MessageFormat("en", "Hello {$user}");
 const result = mf.format({"user": "Bob"});
 // result === "Hello Bob"
 ```
@@ -67,7 +67,7 @@ for any external variables mentioned in the message.
 for reporting errors.
 
 ```js
-const mf = new MessageFormat("Hello {$user}", "en");
+const mf = new MessageFormat("en", "Hello {$user}");
 const result = mf.format({"us3r": "Bob"}, (error) => console.log(error.type));
 // result === "Hello {$user}"
 // Logs the string "unresolved-var" to the console
@@ -95,9 +95,8 @@ rendering it.
 Example:
 
 ```js
-const mf = new MessageFormat("{#b}Hello {$user}{/b}", "en");
+const mf = new MessageFormat("en", "{#b}Hello {$user}{/b}");
 const result = mf.formatToParts({"user": "Bob"});
-}
 ```
 
 Unlike with `format()`, `result` is an array of `MessagePart`s.
