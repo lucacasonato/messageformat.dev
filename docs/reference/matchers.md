@@ -15,7 +15,7 @@ one {{You have {$count} week.}}
 ```
 
 ```json
-{"count": 15}
+{ "count": 15 }
 ```
 
 </mf2-interactive>
@@ -30,8 +30,6 @@ The `.match` keyword has to be followed by a variable: in this case, `$count`. W
 
 The quoted pattern that follows each key is the pattern to use if the key matches.
 
-More complicated matchers can have multiple keys and multiple selectors.
-
 Let's work through how this message is formatted depending on the runtime value of `$count`. Suppose `$count` is `1`.
 * The `:number` selector looks at the value (`1`) and the keys (`one` and `*`). It determines that `one` is the best match.
 * The pattern `{{You have {$count} week.}}` is chosen.
@@ -42,9 +40,55 @@ Now let's suppose `$count` is `42`.
 * The pattern `{{You have {$count} weeks.}}` is chosen.
 * The variable is replaced with its value, and the result is `You have 42 weeks.`
 
-The details of how values are matched again keys depend on the annotation of the selector. `:number` is just one example.
+The details of how values are matched against keys depend on the annotation of the selector. `:number` is just one example.
 
-### Number selection in other languages
+### Multiple selectors
+
+More complicated matchers can have multiple keys and multiple selectors.
+The following example matches on two expressions: one for a gender string,
+and one for a number (of guests).
+
+<mf2-interactive>
+
+```mf2
+.input {$hostGender :string}
+.input {$hostName :string}
+.match $hostGender $guestCount
+  female 0 {{{$hostName} does not give a party.}}
+  female 1 {{{$hostName} invites {$guestName} to her party.}}
+  female 2 {{{$hostName} invites {$guestName} and one other person to her party.}}
+  female * {{{$hostName} invites {$guestCount} people, including {$guestName}, to her party.}}
+  male   0 {{{$hostName} does not give a party.}}
+  male   1 {{{$hostName} invites {$guestName} to his party.}}
+  male   2 {{{$hostName} invites {$guestName} and one other person to his party.}}
+  male   * {{{$hostName} invites {$guestCount} people, including {$guestName}, to his party.}}
+  *      0 {{{$hostName} does not give a party.}}
+  *      1 {{{$hostName} invites {$guestName} to their party.}}
+  *      2 {{{$hostName} invites {$guestName} and one other person to their party.}}
+  *      * {{{$hostName} invites {$guestCount} people, including {$guestName}, to their party.}}
+```
+
+```json
+{ "hostGender": "female", "hostName": "Alice", "guestCount": 2, "guestName": "Bob" }
+```
+</mf2-interactive>
+
+
+In this example, `hostGender` is passed in as a variable separately from `hostName`.
+In a more realistic example, they might be fields of the same object, which are
+extracted using custom selectors, like:
+
+```mf2
+.local $hostGender = {$host :gender}
+.local $hostName   = {$host :name}
+.match $hostGender $guestCount
+  female 0 {{{$hostName} does not give a party.}}
+```
+
+(etc.) In this example, the external input value `$host` would be an object
+with gender and name fields, and perhaps others.
+
+### Number selection in languages with more than two plural categories
 
 While English only has two plural categories, there are other natural languages that
 have more categories. Consider translating the example into Polish:
@@ -62,7 +106,7 @@ other {{Masz {$count} tygodnia.}}
 ```
 
 ```json
-{"count": 5}
+{ "count": 5 }
 ```
 
 </mf2-interactive>

@@ -10,11 +10,11 @@ Almost anything not beginning with a `.` or a `{{` is an _unquoted pattern_ in M
 <mf2-interactive>
 
 ```mf2
-This is a pattern. It can include expressions like {$v} and {#b}markup{/b}.
+This is a pattern. It can include expressions like {$v} and {#bold}markup{/bold}.
 ```
 
 ```json
-{"v": "this"}
+{ "v": "this" }
 ```
 
 </mf2-interactive>
@@ -52,7 +52,7 @@ Note that whitespace in text, including tabs, spaces, and newlines is significan
 ```
 
 ```json
-{"num": 5}
+{ "num": 5 }
 ```
 
 </mf2-interactive>
