@@ -195,7 +195,7 @@ mf = new messageformat.MessageFormat(
          )
 ```
 
-If we invoke `mf.format()`, we get the result `CAT`.
+If we invoke `mf.format()`, we get the result `MESSAGEFORMAT`.
 
 Some things to notice:
 * The `uppercase` function takes three arguments. The first one is a list of locales,
