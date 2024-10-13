@@ -15,7 +15,7 @@ one {{You have {$count} week.}}
 ```
 
 ```json
-{"count": 15}
+{ "count": 15 }
 ```
 
 </mf2-interactive>
@@ -106,7 +106,7 @@ other {{Masz {$count} tygodnia.}}
 ```
 
 ```json
-{"count": 5}
+{ "count": 5 }
 ```
 
 </mf2-interactive>

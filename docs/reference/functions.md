@@ -9,11 +9,10 @@ When you write an annotation in your MessageFormat message, then underneath the 
 
 ```mf2
 Today is {$date :datetime weekday=long}.
-
 ```
 
 ```json
-{"date": "2024-06-06"}
+{ "date": "2024-06-06" }
 ```
 
 </mf2-interactive>
@@ -28,17 +27,15 @@ a formatting error occurs:
 
 ```mf2
 Today is {$date :datetime weekday=long}.
-
 ```
 
 ```json
-{"date": "foo"}
+{ "date": "foo" }
 ```
 
 </mf2-interactive>
 
-This error message is telling you that the string "foo"
-is not a valid date.
+This error message says that the string "foo" is not a valid date.
 
 The set of meaningful options and their values is specific to
 each function, as is the rule for determining which operands
@@ -60,11 +57,10 @@ can be named and referred to in other expressions. For example:
 ```mf2
 .local $date1 = {$date :datetime weekday=long}
 {{Today is {$date1}.}}
-
 ```
 
 ```json
-{"date": "2024-06-06"}
+{ "date": "2024-06-06" }
 ```
 
 </mf2-interactive>
@@ -76,11 +72,10 @@ It would be equivalent to write:
 ```mf2
 .input {$date :datetime weekday=long}
 {{Today is {$date}.}}
-
 ```
 
 ```json
-{"date": "2024-06-06"}
+{ "date": "2024-06-06" }
 ```
 
 </mf2-interactive>
@@ -173,7 +168,8 @@ Revisiting the Czech example from the quick start guide:
 <mf2-interactive locale="cs-CZ">
 
 ```mf2
-.match {$numDays :number}
+.input {$numDays :number}
+.match $numDays
 one  {{{$numDays} den}}
 few  {{{$numDays} dny}}
 many {{{$numDays} dne}}
@@ -196,7 +192,8 @@ However, `number` can also do exact matching:
 <mf2-interactive locale="cs-CZ">
 
 ```mf2
-.match {$numDays :number select=exact}
+.input {$numDays :number select=exact}
+.match $numDays
 one  {{{$numDays} den}}
 few  {{{$numDays} dny}}
 many {{{$numDays} dne}}
@@ -225,7 +222,8 @@ When used as a selector, `string` matches strings exactly.
 <mf2-interactive>
 
 ```mf2
-.match {$operand :string}
+.input {$operand :string}
+.match $operand
 1    {{Number 1}}
 one  {{String "one"}}
 *    {{Something else}}
@@ -233,7 +231,7 @@ one  {{String "one"}}
 ```
 
 ```json
-{"operand": "1"}
+{ "operand": "1" }
 ```
 </mf2-interactive>
 
@@ -253,7 +251,7 @@ of its operand.
 ```
 
 ```json
-{"operand": {"name": "days", "value": 5}}
+{ "operand": {"name": "days", "value": 5} }
 ```
 </mf2-interactive>
 
@@ -276,7 +274,7 @@ The date is {$date :date style=short}.
 ```
 
 ```json
-{"date": "2006-01-02T15:04:06"}
+{ "date": "2006-01-02T15:04:06" }
 ```
 
 </mf2-interactive>
@@ -294,7 +292,7 @@ The date is {$date :date style=short}.
 ```
 
 ```json
-{"date": 1722746637000 }
+{ "date": 1722746637000 }
 ```
 
 </mf2-interactive>
@@ -319,7 +317,7 @@ Or: today is {$date :datetime timeStyle=medium}.
 ```
 
 ```json
-{"date": "2006-01-02T15:04:06"}
+{ "date": "2006-01-02T15:04:06" }
 ```
 
 </mf2-interactive>
@@ -337,7 +335,7 @@ Or: the time is {$date :time style=long}.
 ```
 
 ```json
-{"date": "2006-01-02T15:04:06"}
+{ "date": "2006-01-02T15:04:06" }
 ```
 
 </mf2-interactive>
@@ -374,7 +372,7 @@ implementation), a custom formatter function could format lists:
 I know how to program in {$languages :list type=AND}
 ```
 
-Parameters: `{"languages": ["JavaScript", "C++", "Python"]}`
+Parameters: `{ "languages": ["JavaScript", "C++", "Python"] }`
 
 Result: `I know how to program in JavaScript, C++, and Python`
 
@@ -387,14 +385,15 @@ implementation), custom selectors could extract a field from
 an operand and match on that:
 
 ```mf2
-.match {$person :pronoun}
+.local $pronoun = {$person :pronoun}
+.match $pronoun
 he {{{$person :name} won his game}}
 she {{{$person :name} won her game}}
 they {{{$person :name} won their game}}
 * {{{$person :name} won the game}}
 ```
 
-Parameters: `{"person": { "name": "Alice", "pronoun": "she", "age": 42 } }`
+Parameters: `{ "person": { "name": "Alice", "pronoun": "she", "age": 42 } }`
 
 Result: `Alice won her game`
 
@@ -407,7 +406,8 @@ field from its operand.
 #### Range matching
 
 ```mf2
-.match {$name :range}
+.local $range = {$name :range}
+.match $range
 |A-J| {{{$name} is in the first group}}
 |J-P| {{{$name} is in the second group}}
 |Q-Z| {{{$name} is in the third group}}

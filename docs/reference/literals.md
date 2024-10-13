@@ -20,7 +20,7 @@ Today is {$date :datetime weekday=long}.
 ```
 
 ```json
-{"date": "2024-06-06"}
+{ "date": "2024-06-06" }
 ```
 
 </mf2-interactive>
@@ -36,7 +36,7 @@ The year is {$date :datetime year=|2-digit|}.
 ```
 
 ```json
-{"date": "2024-06-06"}
+{ "date": "2024-06-06" }
 ```
 
 </mf2-interactive>

@@ -14,7 +14,7 @@ This is a pattern. It can include expressions like {$v} and {#bold}markup{/bold}
 ```
 
 ```json
-{"v": "this"}
+{ "v": "this" }
 ```
 
 </mf2-interactive>
@@ -52,7 +52,7 @@ Note that whitespace in text, including tabs, spaces, and newlines is significan
 ```
 
 ```json
-{"num": 5}
+{ "num": 5 }
 ```
 
 </mf2-interactive>
