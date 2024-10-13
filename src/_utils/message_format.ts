@@ -1,7 +1,7 @@
 import {
   MessageExpressionPart,
   MessageFormat,
-} from "npm:messageformat@4.0.0-7";
+} from "npm:messageformat@4.0.0-8";
 
 export { MessageFormat };
 

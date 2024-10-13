@@ -271,7 +271,8 @@ Matchers are used to select different variants of a message based on a value.
 <mf2-interactive>
 
 ```mf2
-.match {$count :integer}
+.input {$count :number}
+.match $count
 one {{You have {$count} notification.}}
 *   {{You have {$count} notifications.}}
 ```
@@ -282,9 +283,10 @@ one {{You have {$count} notification.}}
 
 </mf2-interactive>
 
-Matchers start with a `.match` keyword, followed by the value to match on, in
-curly braces `{}`. The value can be a literal or variable. An annotation is
-required to specify the type of the value to match on.
+Matchers start with a `.match` keyword, followed by the variable to match on.
+The variable must have been declared with a `.input` or `.local` declaration
+before the matcher, with an explicit annotation that specifies the type of the
+variable.
 
 After the match value, there is a block of variants. Each variant starts with
 the value to match on, followed by a message enclosed in double curly braces
@@ -299,7 +301,8 @@ enum-like values, like pronouns in English:
 <mf2-interactive>
 
 ```mf2
-.match {$pronoun :string}
+.input {$pronoun :string}
+.match $pronoun
 he  {{He is a good person.}}
 she {{She is a good person.}}
 *   {{They are a good person.}}
@@ -317,7 +320,8 @@ a space or special character, it must be quoted.
 <mf2-interactive>
 
 ```mf2
-.match {$char :string}
+.input {$char :string}
+.match $char
 | |  {{You entered a space character.}}
 |\|| {{You entered a pipe character.}}
 *    {{You entered something else.}}
@@ -337,7 +341,8 @@ values, but also on locale specific plural categories:
 <mf2-interactive>
 
 ```mf2
-.match {$count :number}
+.input {$count :number}
+.match $count
 one {{You have {$count} notification.}}
 *   {{You have {$count} notifications.}}
 ```
@@ -353,7 +358,8 @@ This is specifically useful for languages with complex plural rules, like Czech:
 <mf2-interactive locale="cs-CZ">
 
 ```mf2
-.match {$numDays :number}
+.input {$numDays :number}
+.match $numDays
 one  {{{$numDays} den}}
 few  {{{$numDays} dny}}
 many {{{$numDays} dne}}
@@ -372,7 +378,8 @@ exact values:
 <mf2-interactive>
 
 ```mf2
-.match {$count :number select=ordinal}
+.input {$count :number select=ordinal}
+.match $count
 one {{You are {$count}st.}}
 two {{You are {$count}nd.}}
 few {{You are {$count}rd.}}
@@ -393,7 +400,9 @@ to be selected based on multiple different values:
 <mf2-interactive>
 
 ```mf2
-.match {$pronoun :string} {$count :number}
+.input {$pronoun :string}
+.input {$count :number}
+.match $pronoun $count
 he one   {{He has {$count} notification.}}
 he *     {{He has {$count} notifications.}}
 she one  {{She has {$count} notification.}}
@@ -416,7 +425,9 @@ values to match against, and can contain multiple variants.
 
 ## Local Declarations
 
-A **local** declaration binds a variable to the value of an expression. `.local` is like `const` in JavaScript. Think of it as a convenient way to reuse the result of an operation without repeating it.
+A **local** declaration binds a variable to the value of an expression. `.local`
+is like `const` in JavaScript. Think of it as a convenient way to reuse the
+result of an operation without repeating it.
 
 <mf2-interactive>
 
@@ -427,32 +438,36 @@ A **local** declaration binds a variable to the value of an expression. `.local`
 ```
 
 ```json
-{"now": "2021-04-03"}
+{ "now": "2021-04-03" }
 ```
 
 </mf2-interactive>
 
-An interesting case that demonstrates the usefulness of `.local` is `.match` statements with multiple variants where you need to reuse a value.
+An interesting case that demonstrates how `.local` is useful is `.match`
+statements with multiple variants where you need to reuse a value.
 
 <mf2-interactive>
 
 ```mf2
 .local $date = {$dt :datetime dateStyle=long}
-.match {$pronouns :string}
+.input {$pronouns :string}
+.match $pronouns
 he  {{He joined on {$date}.}}
 she {{She joined on {$date}.}}
 *   {{They joined on {$date}.}}
 ```
 
 ```json
-{"dt": "2021-04-03", "pronouns": "she"}
+{ "dt": "2021-04-03", "pronouns": "she" }
 ```
 
 </mf2-interactive>
 
 ## Input Declarations
 
-An **input** declaration binds a variable to an external input value. It's not required in order to use external input but is a declarative way to verify the presence of (and even the type of) any input.
+An **input** declaration binds a variable to an external input value. It's not
+required in order to use external input but is a declarative way to verify the
+presence of (and even the type of) any input.
 
 <mf2-interactive>
 
@@ -462,12 +477,13 @@ An **input** declaration binds a variable to an external input value. It's not r
 ```
 
 ```json
-{"count": 5}
+{ "count": 5 }
 ```
 
 </mf2-interactive>
 
-Furthermore, it's really useful when you want to apply certain formatting options onto an input value everytime it's used within the message.
+Furthermore, it's really useful when you want to apply certain formatting
+options onto an input value everytime it's used within the message.
 
 <mf2-interactive>
 
@@ -477,7 +493,7 @@ Furthermore, it's really useful when you want to apply certain formatting option
 ```
 
 ```json
-{"x": 0.42}
+{ "x": 0.42 }
 ```
 
 </mf2-interactive>

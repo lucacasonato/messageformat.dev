@@ -367,11 +367,14 @@ function PluralizationCode() {
   return (
     <div class="space-y-1 -mx-4 md:mx-0">
       <CodeBlock>
-        <span class="text-blue-700">.match</span>
+        <span class="text-blue-700">.input</span>
         {` {`}
         <span class="text-violet-600">$count</span>{" "}
         <span class="text-green-700">:number</span>
         {`}\n`}
+        <span class="text-blue-700">.match</span>{" "}
+        <span class="text-violet-600">$count</span>
+        {`\n`}
         <span class="text-green-700">0</span>
         {`   {{ No items. }}\n`}
         <span class="text-green-700">one</span>
