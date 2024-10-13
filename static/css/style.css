@@ -122,6 +122,10 @@
   @apply list-decimal pl-7 my-4;
 }
 
+.markdown ul ul, .markdown ul ol, .markdown ol ul, .markdown ol ol {
+  @apply my-0;
+}
+
 .markdown li {
   @apply my-0.5;
 }

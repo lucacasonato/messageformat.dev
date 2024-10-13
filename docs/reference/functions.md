@@ -3,7 +3,12 @@ title: Functions
 description: Function annotations enable dynamically executing code from a message to format values, or retrieve environment information.
 ---
 
-When you write an annotation in your MessageFormat message, then underneath the hood, the formatter calls a function. These could either be built-in functions that aim to assist you in performing common i18n operations like formatting common data types or custom functions that are registered by the user in the function registry. The syntax for annotations is as follows, with the operand followed by the function name and finally the options.
+When you write an annotation in your MessageFormat message, then underneath the
+hood, the formatter calls a function. These could either be built-in functions
+that aim to assist you in performing common i18n operations like formatting
+common data types or custom functions that are registered by the user in the
+function registry. The syntax for annotations is as follows, with the operand
+followed by the function name and finally the options.
 
 <mf2-interactive>
 
@@ -17,11 +22,10 @@ Today is {$date :datetime weekday=long}.
 
 </mf2-interactive>
 
-The annotation `{$date :datetime weekday=long}` can be read as:
-"Take the value of the variable `$date` and format it as a date,
-using the `long` format for the weekday part of the date."
-If `:datetime` is passed something that can't be parsed as a date,
-a formatting error occurs:
+The annotation `{$date :datetime weekday=long}` can be read as: "Take the value
+of the variable `$date` and format it as a date, using the `long` format for the
+weekday part of the date." If `:datetime` is passed something that can't be
+parsed as a date, a formatting error occurs:
 
 <mf2-interactive>
 
@@ -37,20 +41,19 @@ Today is {$date :datetime weekday=long}.
 
 This error message says that the string "foo" is not a valid date.
 
-The set of meaningful options and their values is specific to
-each function, as is the rule for determining which operands
-are valid.
+The set of meaningful options and their values is specific to each function, as
+is the rule for determining which operands are valid.
 
-There are two types of functions: formatting functions (formatters) and selector functions.
-The same function can be both a formatter and selector: for example, the built-in
-`:number` function.
+There are two types of functions: formatting functions (formatters) and selector
+functions. The same function can be both a formatter and selector: for example,
+the built-in `:number` function.
 
 ## Formatting functions
 
-A formatting function takes an operand and produces a value from it.
-This value can either be formatted immediately, as when using the
-result in a pattern (like in the `:datetime` example above), or it
-can be named and referred to in other expressions. For example:
+A formatting function takes an operand and produces a value from it. This value
+can either be formatted immediately, as when using the result in a pattern (like
+in the `:datetime` example above), or it can be named and referred to in other
+expressions. For example:
 
 <mf2-interactive>
 
@@ -80,60 +83,56 @@ It would be equivalent to write:
 
 </mf2-interactive>
 
-
 ## Selector functions
 
-Selector functions are used to customize the behavior of a matcher.
-The `:string` and `:number` selector functions are built in,
-but you can also write your own custom selector functions.
-To understand how selectors work, look at this example:
+Selector functions are used to customize the behavior of a matcher. The
+`:string` and `:number` selector functions are built in, but you can also write
+your own custom selector functions. To understand how selectors work, look at
+this example:
 
 <mf2-interactive>
 
 ```mf2
-.match {foo :string}
-foo  {{Foo}}
-bar  {{Bar}}
-*    {{No match}}
-
+.local $val = {foo :string}
+.match $val
+foo {{Foo}}
+bar {{Bar}}
+*   {{No match}}
 ```
 
 </mf2-interactive>
 
-In the annotation `{foo :string}`, the operand is the literal `foo`.
-Underneath the hood, the `string` function is passed in both its
-operand, and a list of the keys for all the variants:
-in this case, `[foo, bar]`.
-It returns a list of keys sorted by preference. `string` does
-exact matching, so in this case it would only return `[foo]`.
-The key `*` is special and is used when the selector doesn't
-return any matching keys.
+In the annotation `{foo :string}`, the operand is the literal `foo`. Underneath
+the hood, the `string` function is passed in both its operand, and a list of the
+keys for all the variants: in this case, `["foo", "bar"]`. It returns a list of
+keys sorted by preference. `string` does exact matching, so in this case it
+would only return `["foo"]`. The key `*` is special and is used when the
+selector doesn't return any matching keys.
 
 ## Built-in functions
 
 ### The `number` and `integer` functions
 
-The `number` and `integer` functions both format and select on
-numbers, including literals (strings) that can be parsed as numbers.
-The `integer` function treats its operand as an integer,
-for example:
+The `number` and `integer` functions both format and select on numbers,
+including literals (strings) that can be parsed as numbers. The `integer`
+function treats its operand as an integer, for example:
 
 <mf2-interactive>
 
 ```mf2
 {3.14 :integer}
-
 ```
+
 </mf2-interactive>
 
-The formatted result when annotating `3.14` with `:integer` is `3`.
-Otherwise, `number` and `integer` behave similarly.
+The formatted result when annotating `3.14` with `:integer` is `3`. Otherwise,
+`number` and `integer` behave similarly.
 
 #### Number formatting
 
-The `number` function has many different options to control
-formatting, some of which also work for `integer`. The full list
-is in [the specification](https://github.com/unicode-org/message-format-wg/blob/main/spec/registry.md#options-1).
+The `number` function has many different options to control formatting, some of
+which also work for `integer`. The full list is in
+[the specification](https://github.com/unicode-org/message-format-wg/blob/main/spec/registry.md#options-1).
 The following example shows how some of the options work.
 
 <mf2-interactive>
@@ -158,10 +157,9 @@ For the most part, these options can be combined arbitrarily.
 
 #### Number selection
 
-When used as a selector in a `.match`,
-the default behavior of `number` is to find the CLDR plural
-category of the operand, and compare the variants against that
-category. This behavior can be customized using options.
+When used as a selector in a `.match`, the default behavior of `number` is to
+find the CLDR plural category of the operand, and compare the variants against
+that category. This behavior can be customized using options.
 
 Revisiting the Czech example from the quick start guide:
 
@@ -182,10 +180,9 @@ many {{{$numDays} dne}}
 
 </mf2-interactive>
 
-Notice that the value of the operand `$numDays` is 2, but
-it matches with the key `few`. The `number` function uses
-CLDR data for the `cs-CZ` locale to determine that
-the plural category of 2 is "few".
+Notice that the value of the operand `$numDays` is 2, but it matches with the
+key `few`. The `number` function uses CLDR data for the `cs-CZ` locale to
+determine that the plural category of 2 is "few".
 
 However, `number` can also do exact matching:
 
@@ -206,14 +203,13 @@ many {{{$numDays} dne}}
 
 </mf2-interactive>
 
-With this option, since "2" is not literally equal to any
-of the other keys, the `*` variant matches.
+With this option, since "2" is not literally equal to any of the other keys, the
+`*` variant matches.
 
 ### The `string` function
 
-The `string` function is both a selector and a formatter function.
-It works on strings and on any operands that can be converted
-to a string.
+The `string` function is both a selector and a formatter function. It works on
+strings and on any operands that can be converted to a string.
 
 #### String selection
 
@@ -227,22 +223,22 @@ When used as a selector, `string` matches strings exactly.
 1    {{Number 1}}
 one  {{String "one"}}
 *    {{Something else}}
-
 ```
 
 ```json
 { "operand": "1" }
 ```
+
 </mf2-interactive>
 
-This may not seem very useful, but anything used as a selector in
-a `.match` must have an annotation, so `string` can be used to
-express your intention to match on a value exactly.
+This may not seem very useful, but anything used as a selector in a `.match`
+must have an annotation, so `string` can be used to express your intention to
+match on a value exactly.
 
 #### String formatting
 
-When used as a formatter, `string` returns a string representation
-of its operand.
+When used as a formatter, `string` returns a string representation of its
+operand.
 
 <mf2-interactive>
 
@@ -251,19 +247,21 @@ of its operand.
 ```
 
 ```json
-{ "operand": {"name": "days", "value": 5} }
+{ "operand": { "name": "days", "value": 5 } }
 ```
+
 </mf2-interactive>
 
-The exact details of how to stringify an operand are
-implementation-dependent, as you can see in this example.
+The exact details of how to stringify an operand are implementation-dependent,
+as you can see in this example (in JavaScript, the default stringification
+behavior of objects is to print them as `[object Object]`).
 
 ### The `date`, `time`, and `datetime` functions
 
-The `date`, `time`, and `datetime` functions are formatting functions
-that format dates. `date` is a version of `datetime` that ignores the
-time component of a date, while `time` is a version of `datetime`
-that ignores the date component.
+The `date`, `time`, and `datetime` functions are formatting functions that
+format dates. `date` is a version of `datetime` that ignores the time component
+of a date, while `time` is a version of `datetime` that ignores the date
+component.
 
 <mf2-interactive>
 
@@ -279,9 +277,9 @@ The date is {$date :date style=short}.
 
 </mf2-interactive>
 
-If supplied as a string, the operand has to be in ISO 8601 format,
-followed by an optional timezone offset. Some implementations may
-also accept other date types, such as an integer timestamp:
+If supplied as a string, the operand has to be in ISO 8601 format, followed by
+an optional timezone offset. Some implementations may also accept other date
+types, such as an integer timestamp:
 
 <mf2-interactive>
 
@@ -297,14 +295,14 @@ The date is {$date :date style=short}.
 
 </mf2-interactive>
 
-`datetime` has two kinds of options: style options and field options.
-In the above example, `weekday` is an example of a field option.
-There are also field options for each part of a date/time.
-Their meanings are implementation-dependent. The names of all the
-options can be found in the [spec](https://github.com/unicode-org/message-format-wg/blob/main/spec/registry.md#field-options).
-The style options are either `dateStyle` or `timeStyle`, whose values
-can be `full`, `long`, `medium`, or `short`. The meaning of these
-values is also implementation-dependent.
+`datetime` has two kinds of options: style options and field options. In the
+above example, `weekday` is an example of a field option. There are also field
+options for each part of a date/time. Their meanings are
+implementation-dependent. The names of all the options can be found in the
+[spec](https://github.com/unicode-org/message-format-wg/blob/main/spec/registry.md#field-options).
+The style options are either `dateStyle` or `timeStyle`, whose values can be
+`full`, `long`, `medium`, or `short`. The meaning of these values is also
+implementation-dependent.
 
 <mf2-interactive>
 
@@ -322,8 +320,8 @@ Or: today is {$date :datetime timeStyle=medium}.
 
 </mf2-interactive>
 
-`date` and `time` both only have one option: `style`. The values
-are the same as for `:datetime`.
+`date` and `time` both only have one option: `style`. The values are the same as
+for `:datetime`.
 
 <mf2-interactive>
 
@@ -340,22 +338,19 @@ Or: the time is {$date :time style=long}.
 
 </mf2-interactive>
 
-
 ## Custom functions
 
-Here are some examples of what you can do with custom functions.
-The examples are not interactive, because the playground doesn't
-currently support supplying a custom function registry.
-The details on how to write and register these functions are
-implementation-dependent.
+Here are some examples of what you can do with custom functions. The examples
+are not interactive, because the playground doesn't currently support supplying
+a custom function registry. The details on how to write and register these
+functions are implementation-dependent.
 
 ### Examples: custom formatters
 
 #### Text transformations
 
-A custom formatter function could stringify its argument
-and apply a text transformation to it, like converting it to
-uppercase:
+A custom formatter function could stringify its argument and apply a text
+transformation to it, like converting it to uppercase:
 
 ```mf2
 Check out {MessageFormat :uppercase}.
@@ -365,8 +360,8 @@ Result: `Check out MESSAGEFORMAT`
 
 #### List formatting
 
-In an implementation with a list type (such as the JavaScript
-implementation), a custom formatter function could format lists:
+In an implementation with a list type (such as the JavaScript implementation), a
+custom formatter function could format lists:
 
 ```mf2
 I know how to program in {$languages :list type=AND}
@@ -381,8 +376,8 @@ Result: `I know how to program in JavaScript, C++, and Python`
 #### Selecting a field
 
 In an implementation with an object type (such as the JavaScript
-implementation), custom selectors could extract a field from
-an operand and match on that:
+implementation), custom selectors could extract a field from an operand and
+match on that:
 
 ```mf2
 .local $pronoun = {$person :pronoun}
@@ -397,11 +392,9 @@ Parameters: `{ "person": { "name": "Alice", "pronoun": "she", "age": 42 } }`
 
 Result: `Alice won her game`
 
-In this example, `pronoun` is a custom selector that extracts the
-`pronoun` field from its operand if supplied an object, and
-matches it against keys
-`name` is a custom formatter that extracts and formats a `name`
-field from its operand.
+In this example, `pronoun` is a custom selector that extracts the `pronoun`
+field from its operand if supplied an object, and matches it against keys `name`
+is a custom formatter that extracts and formats a `name` field from its operand.
 
 #### Range matching
 
@@ -418,6 +411,6 @@ Parameters: `{"name": "Kim"}`
 
 Result: `Kim is in the second group`
 
-In this example, `range` is a custom selector that compares
-the first letter of its string operand against alphabetic ranges.
-It could be extended to support things like time and date ranges.
+In this example, `range` is a custom selector that compares the first letter of
+its string operand against alphabetic ranges. It could be extended to support
+things like time and date ranges.
