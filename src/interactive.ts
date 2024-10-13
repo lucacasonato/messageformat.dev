@@ -123,15 +123,15 @@ export class Mf2Interactive extends HTMLElement {
     let errors: string[] = [];
 
     try {
-      message = new MessageFormat(code, this.#locale);
+      message = new MessageFormat(this.#locale, code);
     } catch (e) {
-      errors = [e.message];
+      errors = [(e as Error).message];
     }
 
     try {
       dataObj = JSON.parse(data);
     } catch (e) {
-      errors.push(e.message);
+      errors.push((e as Error).message);
     }
 
     if (errors.length === 0) {

@@ -125,7 +125,7 @@ export function formatMessageToHTML(
 
     return errors;
   } catch (e) {
-    errors.push(e.message);
+    errors.push((e as Error).message);
     return errors;
   }
 }

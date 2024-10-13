@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localeSelect.appendChild(option);
   }
 
-  const hash = window.location.hash.slice(1);
+  const hash = globalThis.location.hash.slice(1);
   try {
     if (hash) {
       const [encodedMessage, encodedData, encodedLocale] = hash.split(".");
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function share() {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(globalThis.location.href);
     shareButton.textContent = "Copied!";
     setTimeout(() => {
       shareButton.textContent = "Share";
@@ -90,9 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let mf2: MessageFormat | null = null;
     try {
-      mf2 = new MessageFormat(message, locale);
+      mf2 = new MessageFormat(locale, message);
     } catch (e) {
-      messageErrors.textContent = e.message;
+      messageErrors.textContent = (e as Error).message;
       messageErrors.hidden = false;
     }
 
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       dataObj = JSON.parse(data);
     } catch (e) {
-      dataErrors.textContent = e.message;
+      dataErrors.textContent = (e as Error).message;
       dataErrors.hidden = false;
     }
 
