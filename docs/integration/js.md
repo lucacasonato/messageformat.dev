@@ -1,6 +1,6 @@
 ---
-title: Using MF2 with JavaScript
-sidebar_title: JavaScript
+title: Using MF2 with JavaScript and TypeScript
+sidebar_title: JavaScript/TypeScript
 ---
 
 The following guide explains how to use the `mf2-messageformat` package to format MF2 messages.
@@ -46,8 +46,7 @@ const mf = new MessageFormat(["en", "fr"], "Hello {$user}");
 message with different arguments.
 
 The constructor has an optional third argument,
-which can be used to specify custom functions (not covered in this document). The [full documentation](https://messageformat.github.io/messageformat/api/messageformat.messageformat._constructor_/) covers
-custom functions.
+which can be used to specify custom functions. (See [Writing Custom Functions](#writing-custom-functions)).
 
 ### The `format()` method
 
@@ -172,3 +171,79 @@ Since an expression's contents vary depending on input,
 
 See the full [MessageExpressionPart](https://messageformat.github.io/messageformat/api/messageformat.messageexpressionpart/)
 documentation for more.
+
+## Writing custom functions
+
+The optional third argument to the `MessageFormat` constructor is an object
+providing definitions for custom functions. To start with, let's write code
+for a simple custom function:
+
+```js
+function uppercase(locales, options, value) {
+    return { toString: () => value.toUpperCase() }
+}
+```
+
+Now that this function is defined, we can pass it to the `MessageFormat`
+constructor as part of the third argument:
+
+```js
+mf = new messageformat.MessageFormat(
+         ['en'],
+         "{messageformat :uppercase}",
+         { functions : { uppercase } }
+         )
+```
+
+If we invoke `mf.format()`, we get the result `MESSAGEFORMAT`.
+
+Some things to notice:
+* The `uppercase` function takes three arguments. The first one is a list of locales,
+  which we ignore in this example. The second one is the function's _options_; this
+  example doesn't use any options. The third one is the operand for the function,
+  which is a resolved value.
+* In this case, the `value` argument is a string. In a real function, we would want
+  to check the type of `value`, since a message could be written that uses the
+  `:uppercase` annotation on a non-string value.
+* The return value of `uppercase` is an object with a `toString()` method. The
+  message formatter calls this method when evaluating the result of the
+  `{messageformat :uppercase}` expression.
+   * In general, the return value of a function is a resolved value (`MessageValue`).
+     The operand type can be a `MessageValue` as well. Resolved values can have other properties,
+     which are omitted here in the interest of providing the simplest possible example.
+
+> As of this writing, the online API docs aren't updated to include
+> the `MessageValue` type, but it can be found in the code [here](https://github.com/messageformat/messageformat/blob/main/mf2/messageformat/src/functions/index.ts).
+
+To clarify what we mean by "the operand type can be a `MessageValue`", consider
+the following message:
+
+```mf2
+.local $c = {cat :uppercase}
+.local $c1 = {$c :uppercase}
+{{{$c1}}}
+```
+
+We might expect `$c1` to be the same as `$c` (uppercasing a string twice
+gives the same result). But with our function as-is, we get an error:
+
+```
+> const message = ".local $c = {cat :uppercase} .local $c1 = {$c :uppercase} {{{$c1}}}"
+> mf = new messageformat.MessageFormat(['en'], message, { functions : { uppercase } } )
+> mf.format()
+'{�}'
+> (node:1250142) TypeError: value.toUpperCase is not a function
+```
+
+What happened? When evaluating `c1`, instead of a string,
+the `uppercase` function was passed the resolved value of `$c`,
+which is an object with several properties. So calling the
+string method `toUpperCase()` on it results in an error.
+
+A more robust method would check the type of its argument
+and, if passed a `MessageValue`, apply `toString()` to get
+a string. Then it could call `toUpperCase()` on the result.
+
+For more details, see the [API documentation](https://messageformat.github.io/messageformat/api/messageformat.messageformat._constructor_/)
+on the `messageformat` constructor.
+

@@ -135,7 +135,7 @@
 }
 
 .markdown pre {
-  @apply bg-gray-100 p-4 rounded font-mono text-base;
+  @apply bg-gray-100 p-4 rounded font-mono text-base overflow-y-auto;
 }
 
 .markdown mf2-interactive {
