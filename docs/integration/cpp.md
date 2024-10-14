@@ -42,7 +42,7 @@ comes with your distribution, and break things that depend on ICU.
 > described on this site, but some differences may exist, such as
 > the syntax of `.match` (whether it selects on expressions or variables).
 > As of this writing, ICU 76 is a release candidate that can be
-> downloaded [from github](https://unicode-org.github.io/icu/download/).
+> downloaded [from GitHub](https://unicode-org.github.io/icu/download/).
 > In the future, it might be sufficient to upgrade ICU using your
 > system package manager.
 
