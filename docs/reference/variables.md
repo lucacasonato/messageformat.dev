@@ -166,6 +166,29 @@ function.
 
 </mf2-interactive>
 
+Selector options can also be specified in the function:
+
+<mf2-interactive>
+
+```mf2
+.input {$rank :number select=ordinal}
+.match $rank
+one {{This is the {$rank}st most expensive item}}
+two {{This is the {$rank}nd most expensive item}}
+few {{This is the {$rank}rd most expensive item}}
+*   {{This is the {$rank}th most expensive item}}
+```
+
+```json
+{ "rank": 32 }
+```
+
+</mf2-interactive>
+
+When the function in the `.input` declaration is later used
+as a selector, any options attached to it are carried to any
+`.match` statement that uses the declared variable.
+
 ### Shadowing and redeclaration
 
 If a local variable has the same name as an external input value,
