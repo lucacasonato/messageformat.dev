@@ -52,7 +52,7 @@ and one for a number (of guests).
 
 ```mf2
 .input {$hostGender :string}
-.input {$hostName :string}
+.input {$guestCount :number}
 .match $hostGender $guestCount
   female 0 {{{$hostName} does not give a party.}}
   female 1 {{{$hostName} invites {$guestName} to her party.}}
