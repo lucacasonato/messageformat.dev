@@ -105,7 +105,7 @@ isn't exhaustive. To be exhaustive, it must have one variant whose keys are all
 ```mf2
 .local $x = {1 :number}
 .match $x
-one * {{x is singular}}
+one {{x is singular}}
 ```
 </mf2-interactive>
 
