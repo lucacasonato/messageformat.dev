@@ -10,9 +10,10 @@ implementations in Java and [C++](/docs/integration/cpp).
 
 For documentation on the Java implementation, see
 [the ICU API guide](https://unicode-org.github.io/icu-docs/apidoc/released/icu4j/com/ibm/icu/message2/package-summary.html).
-The [ICU User Guide](https://unicode-org.github.io/icu/userguide/) contains
-general information on using ICU, but has not yet been updated to include
-MF2 documentation.
+For more introductory content, see the [ICU User Guide](https://unicode-org.github.io/icu/userguide/)
+page on [using MF2 with ICU in Java](https://unicode-org.github.io/icu/userguide/format_parse/messages/mf2.html).
+This page may not be as up-to-date as this documentation
+and some examples may use an older version of the MF2 syntax.
 
 ## Quick start
 
