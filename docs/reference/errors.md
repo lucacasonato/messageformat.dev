@@ -177,7 +177,7 @@ one {{x is singular}}
 ```
 </mf2-interactive>
 
-This is one of the more complicated errors to understand. Every variable
+Every variable
 used as a selector in a `.match` has to have an _annotation_. But the
 syntax doesn't allow the variable to be annotated directly. Instead,
 it has to be annotated by adding a `.local` or `.input` declaration
