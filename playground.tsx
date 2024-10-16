@@ -193,7 +193,7 @@ export default function IndexPage() {
             </h2>
             <p class="text-black">
               MessageFormat 2 does not have built-in markup tags. The playground
-              however supports three markup tags that can be used to try out
+              however supports five markup tags that can be used to try out
               markup.
             </p>
             <table class="w-full text-left border-collapse">
