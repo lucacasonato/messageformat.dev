@@ -138,6 +138,11 @@
   @apply bg-gray-100 p-4 rounded font-mono text-base overflow-y-auto;
 }
 
+.markdown table td, .markdown table th {
+  border: 1px solid black;
+  padding: 0.3em;
+}
+
 .markdown mf2-interactive {
   @apply border rounded overflow-clip my-4;
 }

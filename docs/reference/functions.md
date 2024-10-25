@@ -3,13 +3,6 @@ title: Functions
 description: Function annotations enable dynamically executing code from a message to format values, or retrieve environment information.
 ---
 
-<style>
-table :is(td, th) {
-  border: 1px solid black;
-  padding: 0.3em;
-}
-</style>
-
 When you write an annotation in your MessageFormat message, then underneath the
 hood, the formatter calls a function. These could either be built-in functions
 that aim to assist you in performing common i18n operations like formatting
