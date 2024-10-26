@@ -3,12 +3,11 @@ title: Quick Start
 description: Get started with the basics of MessageFormat 2.
 ---
 
-MessageFormat 2.0 is designed to enable localization of dynamic messages across
+MessageFormat 2 is designed to enable localization of dynamic messages across
 different human languages. This page walks through the syntax of Message Format
 2 messages, giving an overview of what Message Format 2 is capable of.
 
-To use Message Format 2.0 in a project, follow these guides to set up Message
-Format 2:
+To use Message Format 2 in a project, follow these set up guides:
 
 - [JavaScript/Typescript](/docs/integration/js)
 - [Java](/docs/integration/java)

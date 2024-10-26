@@ -1,9 +1,9 @@
 ---
 title: Guide for Translators
-description: Understanding MessageFormat 2.0 for translators
+description: Understanding MessageFormat 2 for translators
 ---
 
-MessageFormat 2.0 (MF2) is designed to enable localization of dynamic messages across
+MessageFormat 2 (MF2) is designed to enable localization of dynamic messages across
 different human languages. The syntax of MF2 messages is designed
 to make it clear which parts of a message needs to be translated,
 and which parts are code that doesn't need to be translated.

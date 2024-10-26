@@ -10,7 +10,7 @@ export default function IndexPage() {
           <Head />
           <section class="p-4 max-w-screen-lg mx-auto sm:mt-2 md:mt-4 lg:mt-8 text-lg md:text-xl lg:text-2xl space-y-4">
             <AdParagraph>
-              MessageFormat 2.0 is a Unicode standard for localizable dynamic
+              MessageFormat 2 is a Unicode standard for localizable dynamic
               message strings, designed to make it simple to create{" "}
               <b>natural sounding</b> localized messages.
             </AdParagraph>
