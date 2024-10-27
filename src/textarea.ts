@@ -27,7 +27,9 @@ interface InternalLocation {
 
 const domReady = new Promise<void>((resolve) => {
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => resolve(), { once: true });
+    document.addEventListener("DOMContentLoaded", () => resolve(), {
+      once: true,
+    });
   } else {
     resolve();
   }
@@ -228,15 +230,15 @@ export class HighlightedTextarea extends HTMLElement {
   #prevHoveredRanges: Set<Range> = new Set();
 
   #handleMouseMove(e: MouseEvent) {
-    const { pageX, pageY } = e;
+    const { clientX, clientY } = e;
 
     const hoveredRanges: Set<Range> = new Set();
 
     for (const range of this.#hoverableRanges.keys()) {
       for (const { left, top, width, height } of range.getClientRects()) {
         if (
-          left <= pageX && pageX <= left + width && top <= pageY &&
-          pageY <= top + height
+          left <= clientX && clientX <= left + width && top <= clientY &&
+          clientY <= top + height
         ) {
           hoveredRanges.add(range);
           break;
