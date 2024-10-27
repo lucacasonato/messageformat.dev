@@ -1,4 +1,10 @@
 import { formatMessageToHTML, MessageFormat } from "./_utils/message_format.ts";
+import { jsonHighlight } from "./highlighters/json.ts";
+import { mf2Highlight } from "./highlighters/mf2.ts";
+import type { HighlightedTextarea } from "./textarea.ts";
+
+import "./textarea.ts";
+
 
 export class Mf2Interactive extends HTMLElement {
   #locale: string = "en-US";
@@ -6,11 +12,13 @@ export class Mf2Interactive extends HTMLElement {
   #originalCode: string = "";
   #originalData: string = "{}";
 
-  #codeInput: HTMLTextAreaElement | null = null;
-  #dataInput: HTMLTextAreaElement | null = null;
+  #codeInput: HighlightedTextarea | null = null;
+  #dataInput: HighlightedTextarea | null = null;
   #output: HTMLDivElement | null = null;
   #reset: HTMLButtonElement | null = null;
   #share: HTMLAnchorElement | null = null;
+
+  #messageDiagnostics: string[] = [];
 
   constructor() {
     super();
@@ -26,13 +34,24 @@ export class Mf2Interactive extends HTMLElement {
     const dataEl = this.querySelector("code.language-json");
     const data = dataEl?.textContent ?? null;
 
+
+
     if (code !== null) {
-      this.#codeInput = document.createElement("textarea");
+      this.#codeInput = document.createElement("highlighted-textarea") as HighlightedTextarea;
+      this.#codeInput.highlighter = function* (this: Mf2Interactive, code: string) {
+        const highlights = mf2Highlight(code);
+        this.#messageDiagnostics = [];
+        for (const token of highlights) {
+          if (token.label === "error") {
+            this.#messageDiagnostics.push(token.diagnostic!);
+          }
+          yield token;
+        }
+      }.bind(this);
       this.#codeInput.classList.add("code");
+      this.#codeInput.classList.add("highlighted");
       this.#originalCode = this.#codeInput.value = code.replace(/\n$/, "");
       this.#codeInput.spellcheck = false;
-      // temporary fix for browsers that don't have `field-sizing: content;` yet
-      this.#codeInput.rows = this.#codeInput.value.split("\n").length;
       const codePreEl = codeEl!.parentElement!;
       codeEl!.remove();
       codePreEl.replaceWith(this.#codeInput);
@@ -40,12 +59,12 @@ export class Mf2Interactive extends HTMLElement {
     }
 
     if (data !== null) {
-      this.#dataInput = document.createElement("textarea");
+      this.#dataInput = document.createElement("highlighted-textarea") as HighlightedTextarea;
+      this.#dataInput.highlighter = jsonHighlight;
       this.#dataInput.classList.add("data");
+      this.#dataInput.classList.add("highlighted");
       this.#originalData = this.#dataInput.value = data.replace(/\n$/, "");
       this.#dataInput.spellcheck = false;
-      // temporary fix for browsers that don't have `field-sizing: content;` yet
-      this.#dataInput.rows = this.#dataInput.value.split("\n").length;
       const dataPreEl = dataEl!.parentElement!;
       dataEl!.remove();
       dataPreEl.replaceWith(this.#dataInput);
@@ -122,10 +141,14 @@ export class Mf2Interactive extends HTMLElement {
     let dataObj!: Record<string, unknown>;
     let errors: string[] = [];
 
-    try {
-      message = new MessageFormat(this.#locale, code);
-    } catch (e) {
-      errors = [(e as Error).message];
+    if (this.#messageDiagnostics.length > 0) {
+      errors = this.#messageDiagnostics;
+    } else {
+      try {
+        message = new MessageFormat(this.#locale, code);
+      } catch (e) {
+        errors = [(e as Error).message];
+      }
     }
 
     try {
@@ -144,9 +167,11 @@ export class Mf2Interactive extends HTMLElement {
 
     if (errors.length > 0) {
       this.#output.classList.add("error");
-      this.#output.innerText = errors.join("\n");
+      this.#output.textContent = errors.join("\n");
     }
   }
 }
 
-customElements.define("mf2-interactive", Mf2Interactive);
+customElements.whenDefined("highlighted-textarea").then(() => {
+  customElements.define("mf2-interactive", Mf2Interactive);
+});

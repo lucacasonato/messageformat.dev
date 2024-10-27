@@ -6,11 +6,21 @@ description: Error messages identify problems with the syntax or meaning of a me
 You might encounter a number of different error messages while writing an
 MF2 message. Here's a guide to those errors, with an example for each one.
 
-> The presentation and wording of errors varies based on which implementation of MF2
-> you are using. This guide is based on the error descriptions in the
+> The presentation and wording of errors varies based on the implementation of
+> MF2 that is being used. This guide is based on the error descriptions in the
 > [MF2 specification](https://github.com/unicode-org/message-format-wg/blob/main/spec/errors.md);
 > for each one, the error name used by the JavaScript/TypeScript implementation
 > (which is used by the [playground](/playground)) is also provided.
+
+Ease of debugging can vary across implementations, as implementations of MF2
+provide different levels of detail in their error messages. The error messages
+provided by the [MF2 playground](/playground) generally have a high level of
+detail, so if you're struggling to understand an error message from an
+implementation, try paste it into the playground - this can often provide more
+information.
+
+<!-- TODO: link to docs on MF2 vscode extension, and explain that quick fixes
+are provided to fix common errors -->
 
 ## Syntax errors
 
@@ -22,13 +32,13 @@ from providing any more detailed information.
 <mf2-interactive>
 
 ```mf2
-{|missing-brace|
+{|Some text|
 ```
 
 </mf2-interactive>
 
-In this case, the error is reported as `parse-error` and provides a character
-offset within the message where the parser wasn't able to make progress.
+Here the error message "Placeholder is missing the closing brace." is provided
+by the MF2 playground.
 
 ### Fixing the error
 
@@ -40,7 +50,7 @@ Corrected message:
 <mf2-interactive>
 
 ```mf2
-{|missing-brace|}
+{|Some text|}
 ```
 
 </mf2-interactive>

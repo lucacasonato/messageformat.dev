@@ -100,19 +100,21 @@ export default function IndexPage() {
               Message
             </h2>
           </label>
-          <textarea
-            id="message"
-            class="w-full h-full resize-none font-mono p-4 bg-gray-100 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            placeholder="Type your message here..."
-          >
-            {`Hello {$name}!`}
-          </textarea>
+          <highlighted-textarea id="message" class="highlighted">
+            <textarea
+              placeholder="Type your message here..."
+              class="w-full h-full resize-none font-mono p-4 bg-white border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            >
+              {`Hello {$name}!`}
+            </textarea>
+          </highlighted-textarea>
           <div
             id="message-errors"
-            class="text-red-600 bg-red-50 p-4 mt-2 rounded-lg"
+            class="text-red-600 bg-red-50 p-4 mt-2 rounded-lg whitespace-pre-wrap"
             hidden
           >
           </div>
+          <div id="message-popup" class="absolute px-2 py-1 border bg-gray-100 rounded max-w-[90%] md:max-w-[70ch] font-mono" hidden></div>
         </div>
         <div class="h-80 flex flex-col">
           <label for="data">
@@ -120,13 +122,14 @@ export default function IndexPage() {
               Data
             </h2>
           </label>
-          <textarea
-            id="data"
-            class="w-full h-full resize-none font-mono p-4 bg-gray-100 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            placeholder="Type your data here..."
-          >
-            {`{\n  "name": "User"\n}`}
-          </textarea>
+          <highlighted-textarea id="data" class="highlighted">
+            <textarea
+              class="w-full h-full resize-none font-mono p-4 bg-white border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              placeholder="Type your data here..."
+            >
+              {`{\n  "name": "User"\n}`}
+            </textarea>
+          </highlighted-textarea>
           <div
             id="data-errors"
             class="text-red-600 bg-red-50 p-4 mt-2 rounded-lg"

@@ -37,11 +37,13 @@ const site = lume({ location: new URL("https://messageformat.dev") }, {
 site.copy("static/fonts");
 site.copy("static/js");
 site.copy("static/logos");
+site.copy("static/textarea");
+site.copy("static/textarea2");
 
 site.use(tailwindcss({ options: tailwindConfig }));
 site.use(postcss());
 site.use(jsx({}));
-site.use(esbuild({ extensions: [".ts"] }));
+site.use(esbuild({ extensions: [".entry.ts"], options: { minify: false, keepNames: false } }));
 site.use(inline());
 site.use(nav({}));
 site.use(toc({ anchor: false }));

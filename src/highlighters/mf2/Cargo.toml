@@ -1,0 +1,17 @@
+[package]
+name = "mf2_website"
+version = "0.1.0"
+publish = false
+edition = "2021"
+
+[lib]
+name = "mf2_website"
+path = "lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+mf2_parser = { path = "../../../../mf2-tools/parser" }
+
+serde = "1.0.210"
+wasm-bindgen = "=0.2.92"
+serde-wasm-bindgen = "0.6.5"

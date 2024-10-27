@@ -6,6 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        mono: "'Fira Code', monospace",
         handwritten: ["'Kalam'", "cursive"],
       },
       animation: {
