@@ -315,7 +315,9 @@ if (supportsPlaintextEditables() && CSS.highlights) {
         this.#textarea.value = value;
       }
 
-      connectedCallback() {
+      async connectedCallback() {
+        await domReady;
+
         const textarea = this.querySelector("textarea");
         if (textarea) {
           this.#textarea = textarea;
