@@ -220,6 +220,7 @@ export function* jsonHighlight(text: string): Generator<HighlightToken> {
       case "8":
       case "9": {
         const start = index;
+        index++;
         while (
           /[0-9.]/.test(text[index]) && index < text.length
         ) {

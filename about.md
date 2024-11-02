@@ -1,6 +1,8 @@
 ---
 layout: docs.vto
 title: About this website
+sidebar:
+  - about/
 ---
 
 This website is a third party website for Message Format 2, maintained by Luca
@@ -9,9 +11,10 @@ Casonato.
 This website was developed by Luca Casonato. The content is maintained by Luca
 Casonato and Tim Chevalier.
 
-The playground and interactive blocks format messages using the JavaScript
+The playground and interactie code blocks format messages using the JavaScript
 implementation of Message Format 2, maintained by Eemeli Aro. Highlighting and
-other language features are powered by the Message Format 2 Language Server,
+other language features are powered by the
+[Message Format 2 Language Server](https://github.com/lucacasonato/mf2-tools),
 maintained by Luca Casonato and Nicolò Ribaudo.
 
 ## License
@@ -35,9 +38,9 @@ manually ensure that there is enough space around it.
 
 | Variant                         | Preview                                                                                           | PNG                                                       | SVG                                                       |
 | ------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| Logo only                       | <div><img src="/static/logos/no-padding/mf2-logo-only.svg" class="border max-h-20"></div>         | [PNG](/static/logos/no-padding/mf2-logo-only.png)         | [SVG](/static/logos/no-padding/mf2-logo-only.svg)         |
 | Logo and wordmark, with padding | <div><img src="/static/logos/padding/mf2-logo-and-wordmark.svg" class="border max-h-12"></div>    | [PNG](/static/logos/padding/mf2-logo-and-wordmark.png)    | [SVG](/static/logos/padding/mf2-logo-and-wordmark.svg)    |
 | Logo and wordmark, no padding   | <div><img src="/static/logos/no-padding/mf2-logo-and-wordmark.svg" class="border max-h-10"></div> | [PNG](/static/logos/no-padding/mf2-logo-and-wordmark.png) | [SVG](/static/logos/no-padding/mf2-logo-and-wordmark.svg) |
-| Logo only                       | <div><img src="/static/logos/no-padding/mf2-logo-only.svg" class="border max-h-20"></div>         | [PNG](/static/logos/no-padding/mf2-logo-only.png)         | [SVG](/static/logos/no-padding/mf2-logo-only.svg)         |
 | Wordmark only, with padding     | <div><img src="/static/logos/padding/mf2-wordmark-only.svg" class="border max-h-12"></div>        | [PNG](/static/logos/padding/mf2-wordmark-only.png)        | [SVG](/static/logos/padding/mf2-wordmark-only.svg)        |
 | Wordmark only, no padding       | <div><img src="/static/logos/no-padding/mf2-wordmark-only.svg" class="border max-h-10"></div>     | [PNG](/static/logos/no-padding/mf2-wordmark-only.png)     | [SVG](/static/logos/no-padding/mf2-wordmark-only.svg)     |
 

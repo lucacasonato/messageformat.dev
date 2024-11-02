@@ -2,6 +2,8 @@ import { ComponentChildren } from "preact";
 
 export const layout = "layout.vto";
 
+export const title = "Home";
+
 export default function IndexPage() {
   return (
     <>
@@ -137,6 +139,12 @@ export default function IndexPage() {
               class="underline underline-offset-2 hover:text-blue-600 transition duration-100"
             >
               Luca Casonato
+            </a>. For more, see{" "}
+            <a
+              href="/about/"
+              class="underline underline-offset-2 hover:text-blue-600 transition duration-100"
+            >
+              About
             </a>.
           </p>
         </div>
