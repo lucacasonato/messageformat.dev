@@ -144,9 +144,18 @@ export class HighlightedTextarea extends HTMLElement {
     this.appendChild(this.#textarea);
 
     this.#tryHighlight();
-    this.addEventListener("input", this.#tryHighlight.bind(this));
-    this.addEventListener("mousemove", this.#handleMouseMove.bind(this));
-    this.addEventListener("mouseout", this.#handleMouseOut.bind(this));
+    this.#textarea.addEventListener(
+      "input",
+      this.#tryHighlight.bind(this),
+    );
+    this.#textarea.addEventListener(
+      "mousemove",
+      this.#handleMouseMove.bind(this),
+    );
+    this.#textarea.addEventListener(
+      "mouseout",
+      this.#handleMouseOut.bind(this),
+    );
   }
 
   #tryHighlight() {

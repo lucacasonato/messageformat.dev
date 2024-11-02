@@ -5,7 +5,6 @@ import type { HighlightedTextarea } from "./textarea.ts";
 
 import "./textarea.ts";
 
-
 export class Mf2Interactive extends HTMLElement {
   #locale: string = "en-US";
 
@@ -34,11 +33,14 @@ export class Mf2Interactive extends HTMLElement {
     const dataEl = this.querySelector("code.language-json");
     const data = dataEl?.textContent ?? null;
 
-
-
     if (code !== null) {
-      this.#codeInput = document.createElement("highlighted-textarea") as HighlightedTextarea;
-      this.#codeInput.highlighter = function* (this: Mf2Interactive, code: string) {
+      this.#codeInput = document.createElement(
+        "highlighted-textarea",
+      ) as HighlightedTextarea;
+      this.#codeInput.highlighter = function* (
+        this: Mf2Interactive,
+        code: string,
+      ) {
         const highlights = mf2Highlight(code);
         this.#messageDiagnostics = [];
         for (const token of highlights) {
@@ -59,7 +61,9 @@ export class Mf2Interactive extends HTMLElement {
     }
 
     if (data !== null) {
-      this.#dataInput = document.createElement("highlighted-textarea") as HighlightedTextarea;
+      this.#dataInput = document.createElement(
+        "highlighted-textarea",
+      ) as HighlightedTextarea;
       this.#dataInput.highlighter = jsonHighlight;
       this.#dataInput.classList.add("data");
       this.#dataInput.classList.add("highlighted");
