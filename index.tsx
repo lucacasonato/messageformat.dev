@@ -149,7 +149,7 @@ export function Head() {
   return (
     <header class="w-full pt-6 sm:pt-8 md:pt-10 lg:pt-20 px-4 max-w-screen-lg mx-auto flex gap-4 sm:gap-8 sm:items-center">
       <img
-        src="/static/logos/mf2-no-padding.svg"
+        src="/static/logos/no-padding/mf2-logo-only.svg"
         alt="MessageFormat 2"
         class="hidden sm:block size-12 md:size-24 lg:size-32"
       />

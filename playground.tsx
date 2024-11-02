@@ -25,7 +25,10 @@ export default function IndexPage() {
         <nav class="z-20 h-full">
           <div class="h-full flex justify-between items-center pb-1 px-8 max-w-screen-lg mx-auto">
             <div class="flex items-center gap-3">
-              <img src="/static/logos/mf2-no-padding.svg" class="size-10" />
+              <img
+                src="/static/logos/no-padding/mf2-logo-only.svg"
+                class="size-10"
+              />
               <div>
                 <a
                   href="/"
