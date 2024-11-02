@@ -8,7 +8,7 @@ export default function IndexPage() {
       <div class="bg-blue-50">
         <div class="mx-auto max-w-screen-md">
           <Head />
-          <section class="p-4 max-w-screen-lg mx-auto sm:mt-2 md:mt-4 lg:mt-8 text-lg md:text-xl lg:text-2xl space-y-4">
+          <section class="p-4 max-w-screen-lg mx-auto mt-2 md:mt-4 lg:mt-8 text-lg md:text-xl lg:text-2xl space-y-4">
             <AdParagraph>
               MessageFormat 2 is a Unicode standard for localizable dynamic
               message strings, designed to make it simple to create{" "}
@@ -147,13 +147,20 @@ export default function IndexPage() {
 
 export function Head() {
   return (
-    <header class="w-full pt-6 sm:pt-8 md:pt-10 lg:pt-20 px-4 max-w-screen-lg mx-auto">
-      <h1 class="block text-4xl md:text-5xl lg:text-6xl lg:leading-tighter tracking-tight md:tracking-tighter font-serif font-bold">
-        MessageFormat 2
-      </h1>
-      <p class="block text-xl md:text-2xl lg:text-3xl">
-        A full featured localization system, from Unicode.
-      </p>
+    <header class="w-full pt-6 sm:pt-8 md:pt-10 lg:pt-20 px-4 max-w-screen-lg mx-auto flex gap-4 sm:gap-8 sm:items-center">
+      <img
+        src="/static/logos/mf2-no-padding.svg"
+        alt="MessageFormat 2"
+        class="hidden sm:block size-12 md:size-24 lg:size-32"
+      />
+      <div>
+        <h1 class="block text-4xl md:text-5xl lg:text-6xl lg:leading-tighter tracking-tight md:tracking-tighter font-serif font-bold">
+          MessageFormat 2
+        </h1>
+        <p class="block text-xl md:text-2xl lg:text-2xl">
+          A full featured localization system, from&nbsp;Unicode.
+        </p>
+      </div>
     </header>
   );
 }
@@ -273,7 +280,7 @@ function ReplacementVariableCode() {
     <div class="space-y-1 pt-6 -mx-4 md:mx-0">
       <div class="relative">
         <span
-          class="absolute -top-[60%] left-[12.5rem] text-nowrap font-handwritten text-lg px-2"
+          class="absolute -top-[60%] left-[11.5rem] text-nowrap font-handwritten text-lg px-2"
           data-arrow-to="replacement-var"
         >
           a replacement variable

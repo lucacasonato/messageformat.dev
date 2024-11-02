@@ -24,16 +24,19 @@ export default function IndexPage() {
         </svg>
         <nav class="z-20 h-full">
           <div class="h-full flex justify-between items-center pb-1 px-8 max-w-screen-lg mx-auto">
-            <div>
-              <a
-                href="/"
-                class="text-white
+            <div class="flex items-center gap-3">
+              <img src="/static/logos/mf2-no-padding.svg" class="size-10" />
+              <div>
+                <a
+                  href="/"
+                  class="text-white
          font-serif font-bold text-2xl hover:underline underline-offset-4"
-              >
-                MessageFormat 2
-              </a>
-              <span class="mx-2 text-white select-none">/</span>
-              <span class="text-white text-lg">Playground</span>
+                >
+                  MessageFormat 2
+                </a>
+                <span class="mx-2 text-white select-none">/</span>
+                <span class="text-white text-lg">Playground</span>
+              </div>
             </div>
             <div class="flex gap-6 items-end">
               <div class="flex flex-col">
@@ -114,7 +117,12 @@ export default function IndexPage() {
             hidden
           >
           </div>
-          <div id="message-popup" class="absolute px-2 py-1 border bg-gray-100 rounded max-w-[90%] md:max-w-[70ch] font-mono" hidden></div>
+          <div
+            id="message-popup"
+            class="absolute px-2 py-1 border bg-gray-100 rounded max-w-[90%] md:max-w-[70ch] font-mono"
+            hidden
+          >
+          </div>
         </div>
         <div class="h-80 flex flex-col">
           <label for="data">
