@@ -14,6 +14,9 @@ To use Message Format 2 in a project, follow these set up guides:
 - [C](/docs/integration/c)
 - [C++](/docs/integration/cpp)
 
+To set up your editor or IDE to work with Message Format 2, see the
+[editor setup](/docs/lsp) guide.
+
 You can also try out Message Format 2 in the online playground:
 
 <a href="/playground/" class="button mb-8">Try in Playground</a>
