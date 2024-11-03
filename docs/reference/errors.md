@@ -69,7 +69,7 @@ fallback output for messages that contain these errors.
 JS name: `key-mismatch`
 
 A "Variant Key Mismatch" error occurs when the number of keys in a variant in a
-[matcher](/docs/reference/matcher/) differs from the number of selector
+[matcher](/docs/reference/matchers/) differs from the number of selector
 variables. Remember that all the variants have to have the same number of keys,
 which has to be the same as the number of selector variables.
 
@@ -108,7 +108,7 @@ one {{Correct number of keys}}
 JS name: `missing-fallback`
 
 A "Missing Fallback Variant" error occurs when a
-[matcher](/docs/reference/matcher) isn't exhaustive. To be exhaustive, it must
+[matcher](/docs/reference/matchers/) isn't exhaustive. To be exhaustive, it must
 have one variant whose keys are all `*` (the wildcard key, which matches
 anything).
 
@@ -336,7 +336,7 @@ missing or inconsistent runtime data.
 
 JS error message: "Variable not available"
 
-In MF2, [variables](/docs/reference/variable/) have to be declared before they
+In MF2, [variables](/docs/reference/variables/) have to be declared before they
 are used. This means either declaring them with a `.local` declaration, or
 providing them as an external input variable.
 
